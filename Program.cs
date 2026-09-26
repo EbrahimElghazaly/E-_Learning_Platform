@@ -3,6 +3,28 @@ using System.Collections.Generic;
 
 namespace ELearningPlatform
 {
+    #region Small Interfaces To Use I Principle
+    public interface ICourseDisplay
+    {
+        void ShowCourse();
+    }
+    public interface ILessonManagement
+    {
+        void AddLesson(Lesson lesson);
+    }
+    public interface IEnrollmentDisplay
+    {
+        void ShowEnrollment();
+    }
+    public interface IPaymentDisplay
+    {
+        void ShowPayment();
+    }
+    public interface IReviewDisplay
+    {
+        void ShowReview();
+    }
+    #endregion
     // Instructor
 
     public class Instructor
@@ -68,7 +90,7 @@ namespace ELearningPlatform
     }
 
     // Course
-    public class Course
+    public class Course : ICourseDisplay, ILessonManagement
     {
         public int CourseID;
         public string Title;
@@ -144,7 +166,7 @@ namespace ELearningPlatform
     }
 
     // Enrollment
-    public class Enrollment
+    public class Enrollment : IEnrollmentDisplay
     {
         public int EnrollmentID;
         public Student Student;
@@ -180,7 +202,7 @@ namespace ELearningPlatform
     }
 
     // Payment
-    public class Payment
+    public class Payment : IPaymentDisplay
     {
         public int PaymentID;
         public Enrollment Enrollment;
@@ -213,7 +235,7 @@ namespace ELearningPlatform
     }
 
     // Review
-    public class Review
+    public class Review : IReviewDisplay
     {
         public int ReviewID;
         public Student Student;
