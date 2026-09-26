@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ELearningPlatform
 {
-    // Instructor
+
 
     public class Instructor
     {
@@ -13,7 +13,7 @@ namespace ELearningPlatform
         public string Specialization;
         public string Bio;
 
-        public Instructor(int instructorID,string name,string email,string specialization,string bio)
+        public Instructor(int instructorID, string name, string email, string specialization, string bio)
         {
             InstructorID = instructorID;
             Name = name;
@@ -32,14 +32,14 @@ namespace ELearningPlatform
         }
     }
 
-    // Student
+
     public class Student
     {
         public int StudentID;
         public string Name;
         public string Email;
 
-        public Student(int studentID,string name,string email)
+        public Student(int studentID, string name, string email)
         {
             StudentID = studentID;
             Name = name;
@@ -54,20 +54,20 @@ namespace ELearningPlatform
         }
     }
 
-    // Category
+
     public class Category
     {
         public int CategoryID;
         public string Name;
 
-        public Category(int categoryID,string name)
+        public Category(int categoryID, string name)
         {
             CategoryID = categoryID;
             Name = name;
         }
     }
 
-    // Course
+
     public class Course
     {
         public int CourseID;
@@ -81,7 +81,7 @@ namespace ELearningPlatform
         public Category Category;
         public List<Lesson> Lessons;
 
-        public Course(int courseID,string title,string description,double price,string duration,string level,string language,Instructor instructor,Category category)
+        public Course(int courseID, string title, string description, double price, string duration, string level, string language, Instructor instructor, Category category)
         {
             CourseID = courseID;
             Title = title;
@@ -100,10 +100,7 @@ namespace ELearningPlatform
             Lessons.Add(lesson);
         }
 
-        // ---------- LSP (Ahmed Khalifa) ----------
-        // The "contract" every Course (and any future subtype) must honor:
-        // always return a valid, non-negative final price. No exceptions,
-        // no special cases the caller needs to know about.
+
         public virtual double GetFinalPrice()
         {
             return Price;
@@ -136,15 +133,7 @@ namespace ELearningPlatform
         }
     }
 
-    // ============================================================
-    // LSP (Liskov Substitution Principle) - Ahmed Khalifa
-    // ============================================================
-    // FreeCourse and CertificateCourse are both a "Course" (IS-A relationship).
-    // Anywhere in the program that expects a "Course", either of these two
-    // can be used instead without breaking anything - that is exactly what
-    // the Liskov Substitution Principle means.
 
-    // A free/promotional course - price is always 0, no matter what.
     public class FreeCourse : Course
     {
         public FreeCourse(int courseID, string title, string description, string duration,
@@ -153,7 +142,7 @@ namespace ELearningPlatform
         {
         }
 
-        // Still respects the base contract: returns a valid, non-negative price.
+
         public override double GetFinalPrice()
         {
             return 0;
@@ -167,7 +156,7 @@ namespace ELearningPlatform
         }
     }
 
-    // A paid course that also includes a certificate fee on top of its price.
+
     public class CertificateCourse : Course
     {
         public const double CertificateFee = 100;
@@ -179,7 +168,7 @@ namespace ELearningPlatform
         {
         }
 
-        // Still respects the base contract: returns a valid, non-negative price.
+
         public override double GetFinalPrice()
         {
             return Price + CertificateFee;
@@ -194,7 +183,7 @@ namespace ELearningPlatform
         }
     }
 
-    // Lesson
+
     public class Lesson
     {
         public int LessonID;
@@ -202,7 +191,7 @@ namespace ELearningPlatform
         public string Duration;
         public int OrderNumber;
 
-        public Lesson(int lessonID,string title,string duration,int orderNumber)
+        public Lesson(int lessonID, string title, string duration, int orderNumber)
         {
             LessonID = lessonID;
             Title = title;
@@ -211,7 +200,7 @@ namespace ELearningPlatform
         }
     }
 
-    // Enrollment
+
     public class Enrollment
     {
         public int EnrollmentID;
@@ -222,7 +211,7 @@ namespace ELearningPlatform
         public double Amount;
         public string PaymentMethod;
 
-        public Enrollment(int enrollmentID,Student student,Course course,DateTime enrollDate,string status,double amount,string paymentMethod)
+        public Enrollment(int enrollmentID, Student student, Course course, DateTime enrollDate, string status, double amount, string paymentMethod)
         {
             EnrollmentID = enrollmentID;
             Student = student;
@@ -247,7 +236,7 @@ namespace ELearningPlatform
         }
     }
 
-    // Payment
+
     public class Payment
     {
         public int PaymentID;
@@ -256,7 +245,7 @@ namespace ELearningPlatform
         public string PaymentMethod;
         public DateTime PaymentDate;
         public string Status;
-        public Payment(int paymentID,Enrollment enrollment,double amount,string paymentMethod,DateTime paymentDate,string status)
+        public Payment(int paymentID, Enrollment enrollment, double amount, string paymentMethod, DateTime paymentDate, string status)
         {
             PaymentID = paymentID;
             Enrollment = enrollment;
@@ -280,7 +269,7 @@ namespace ELearningPlatform
         }
     }
 
-    // Review
+
     public class Review
     {
         public int ReviewID;
@@ -290,7 +279,7 @@ namespace ELearningPlatform
         public string Comment;
         public DateTime ReviewDate;
 
-        public Review(int reviewID,Student student,Course course,int rating,string comment,DateTime reviewDate)
+        public Review(int reviewID, Student student, Course course, int rating, string comment, DateTime reviewDate)
         {
             ReviewID = reviewID;
             Student = student;
@@ -313,57 +302,56 @@ namespace ELearningPlatform
         }
     }
 
-    // Program
     internal class Program
     {
         static void Main(string[] args)
         {
-            // Categories
-
-            Category category1 =new Category(1, "Programming");
-
-            Category category2 =new Category(2, "Database");
-
-            Category category3 =new Category(3, "Front-End");
 
 
-            // Instructors
+            Category category1 = new Category(1, "Programming");
 
-            Instructor instructor1 =new Instructor(1,"Ahmed Mohamed","ahmed@gmail.com","C# and .NET","C# and .NET Instructor");
+            Category category2 = new Category(2, "Database");
 
-            Instructor instructor2 = new Instructor(2, "Mohamed Ali","mohamed@gmail.com","Database","SQL Server Instructor");
+            Category category3 = new Category(3, "Front-End");
 
-            Instructor instructor3 =new Instructor(3,"Sara Hassan","sara@gmail.com","Front-End","Front-End Instructor");
 
-            // Students
 
-            Student student1 =new Student(1,"Ibrahim Elghazaly","ibrahim@gmail.com");
 
-            Student student2 =new Student(2,"Omar Ahmed","omar@gmail.com");
+            Instructor instructor1 = new Instructor(1, "Ahmed Mohamed", "ahmed@gmail.com", "C# and .NET", "C# and .NET Instructor");
 
-            Student student3 =new Student(3,"Ali Mohamed","ali@gmail.com");
+            Instructor instructor2 = new Instructor(2, "Mohamed Ali", "mohamed@gmail.com", "Database", "SQL Server Instructor");
 
-            // Courses
+            Instructor instructor3 = new Instructor(3, "Sara Hassan", "sara@gmail.com", "Front-End", "Front-End Instructor");
 
-            Course course1 =new Course(1,"C# Programming","Learn C# Programming",150,"40 Hours","Beginner","English",instructor1,category1);
 
-            Course course2 =new Course(2,"SQL Server","Learn SQL Server and Database",120,"30 Hours","Intermediate","English",instructor2,category2);
 
-            Course course3 =new Course(3,"Front-End Development","Learn HTML CSS and JavaScript",180,"50 Hours","Beginner","English",instructor3,category3);
+            Student student1 = new Student(1, "Ibrahim Elghazaly", "ibrahim@gmail.com");
 
-            // Lessons
+            Student student2 = new Student(2, "Omar Ahmed", "omar@gmail.com");
 
-            Lesson lesson1 =new Lesson(1,"Introduction to C#","20 Minutes",1);
+            Student student3 = new Student(3, "Ali Mohamed", "ali@gmail.com");
 
-            Lesson lesson2 =new Lesson(2,"Variables and Data Types","30 Minutes",2);
 
-            Lesson lesson3 =new Lesson(3,"Classes and Objects","40 Minutes",3);
 
-            Lesson lesson4 =new Lesson(4,"Introduction to SQL","25 Minutes",1);
+            Course course1 = new Course(1, "C# Programming", "Learn C# Programming", 150, "40 Hours", "Beginner", "English", instructor1, category1);
 
-            Lesson lesson5 =new Lesson(5,"SELECT Statement","30 Minutes",2);
+            Course course2 = new Course(2, "SQL Server", "Learn SQL Server and Database", 120, "30 Hours", "Intermediate", "English", instructor2, category2);
 
-            // Add Lessons To Courses
+            Course course3 = new Course(3, "Front-End Development", "Learn HTML CSS and JavaScript", 180, "50 Hours", "Beginner", "English", instructor3, category3);
+
+
+
+            Lesson lesson1 = new Lesson(1, "Introduction to C#", "20 Minutes", 1);
+
+            Lesson lesson2 = new Lesson(2, "Variables and Data Types", "30 Minutes", 2);
+
+            Lesson lesson3 = new Lesson(3, "Classes and Objects", "40 Minutes", 3);
+
+            Lesson lesson4 = new Lesson(4, "Introduction to SQL", "25 Minutes", 1);
+
+            Lesson lesson5 = new Lesson(5, "SELECT Statement", "30 Minutes", 2);
+
+
 
             course1.AddLesson(lesson1);
             course1.AddLesson(lesson2);
@@ -371,35 +359,35 @@ namespace ELearningPlatform
             course2.AddLesson(lesson4);
             course2.AddLesson(lesson5);
 
-            // Enrollments
 
-            Enrollment enrollment1 =new Enrollment(1,student1,course1,DateTime.Now,"Active",150,"Credit Card");
 
-            Enrollment enrollment2 =new Enrollment(2,student1,course2,DateTime.Now,"Active",120,"Cash");
+            Enrollment enrollment1 = new Enrollment(1, student1, course1, DateTime.Now, "Active", 150, "Credit Card");
 
-            Enrollment enrollment3 =new Enrollment(3,student2,course1,DateTime.Now,"Active",150,"Credit Card");
+            Enrollment enrollment2 = new Enrollment(2, student1, course2, DateTime.Now, "Active", 120, "Cash");
 
-            Enrollment enrollment4 =new Enrollment(4,student3,course3,DateTime.Now,"Active",180,"PayPal");
+            Enrollment enrollment3 = new Enrollment(3, student2, course1, DateTime.Now, "Active", 150, "Credit Card");
 
-            // Payments
+            Enrollment enrollment4 = new Enrollment(4, student3, course3, DateTime.Now, "Active", 180, "PayPal");
 
-            Payment payment1 =new Payment(1,enrollment1,150,"Credit Card",DateTime.Now,"Completed");
 
-            Payment payment2 =new Payment(2,enrollment2,120,"Cash",DateTime.Now,"Completed");
 
-            Payment payment3 =new Payment(3,enrollment3,150,"Credit Card",DateTime.Now,"Completed");
+            Payment payment1 = new Payment(1, enrollment1, 150, "Credit Card", DateTime.Now, "Completed");
 
-            Payment payment4 =new Payment(4,enrollment4,180,"PayPal",DateTime.Now,"Completed");
+            Payment payment2 = new Payment(2, enrollment2, 120, "Cash", DateTime.Now, "Completed");
 
-            // Reviews
+            Payment payment3 = new Payment(3, enrollment3, 150, "Credit Card", DateTime.Now, "Completed");
 
-            Review review1 =new Review(1,student1,course1,5,"Very good course",DateTime.Now);
+            Payment payment4 = new Payment(4, enrollment4, 180, "PayPal", DateTime.Now, "Completed");
 
-            Review review2 =new Review(2,student2,course1,4,"Good course",DateTime.Now);
 
-            Review review3 =new Review(3,student1,course2,5,"Very useful SQL course",DateTime.Now);
 
-            // Display
+            Review review1 = new Review(1, student1, course1, 5, "Very good course", DateTime.Now);
+
+            Review review2 = new Review(2, student2, course1, 4, "Good course", DateTime.Now);
+
+            Review review3 = new Review(3, student1, course2, 5, "Very useful SQL course", DateTime.Now);
+
+
 
             Console.WriteLine("========== STUDENTS ==========");
 
@@ -428,9 +416,6 @@ namespace ELearningPlatform
             course3.ShowCourse();
             Console.WriteLine();
 
-            // ============================================================
-            // LSP DEMO - Ahmed Khalifa (Liskov Substitution Principle)
-            // ============================================================
             Console.WriteLine("========== LSP DEMO (Ahmed Khalifa) ==========");
 
             FreeCourse freeCourse = new FreeCourse(
@@ -441,17 +426,13 @@ namespace ELearningPlatform
                 5, "Advanced ASP.NET Core", "Deep dive with a certificate", 300,
                 "60 Hours", "Advanced", "English", instructor2, category2);
 
-            // A list of the BASE type "Course" only - holding THREE different
-            // concrete types (Course, FreeCourse, CertificateCourse).
             List<Course> allCourses = new List<Course> { course1, freeCourse, certificateCourse };
 
             double totalRevenue = 0;
 
             foreach (Course course in allCourses)
             {
-                // No "if (course is FreeCourse)" anywhere here.
-                // Every object behaves correctly as a "Course", regardless of
-                // its real type -> substituting one for another breaks nothing.
+.
                 course.ShowCourse();
                 Console.WriteLine("Final Price To Pay: " + course.GetFinalPrice());
                 Console.WriteLine();
@@ -491,18 +472,6 @@ namespace ELearningPlatform
             review2.ShowReview();
             Console.WriteLine();
             review3.ShowReview();
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
