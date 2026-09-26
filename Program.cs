@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ELearningPlatform
 {
     // Instructor
-
     public class Instructor
     {
         public int InstructorID;
@@ -99,6 +98,7 @@ namespace ELearningPlatform
         {
             Lessons.Add(lesson);
         }
+
         public void ShowCourse()
         {
             Console.WriteLine("====================================");
@@ -188,6 +188,7 @@ namespace ELearningPlatform
         public string PaymentMethod;
         public DateTime PaymentDate;
         public string Status;
+
         public Payment(int paymentID,Enrollment enrollment,double amount,string paymentMethod,DateTime paymentDate,string status)
         {
             PaymentID = paymentID;
@@ -242,6 +243,39 @@ namespace ELearningPlatform
             Console.WriteLine("Comment: " + Comment);
             Console.WriteLine("Review Date: " + ReviewDate);
             Console.WriteLine("====================================");
+        }
+    }
+
+    // Open Closed Principle
+
+    public interface IDiscount
+    {
+        double CalculateDiscount(double price);
+    }
+
+    public class StudentDiscount : IDiscount
+    {
+        public double CalculateDiscount(double price)
+        {
+            return price * 0.10;
+        }
+    }
+
+    public class VIPDiscount : IDiscount
+    {
+        public double CalculateDiscount(double price)
+        {
+            return price * 0.20;
+        }
+    }
+
+    public class DiscountCalculator
+    {
+        public double CalculateFinalPrice(double price, IDiscount discount)
+        {
+            double discountAmount = discount.CalculateDiscount(price);
+
+            return price - discountAmount;
         }
     }
 
@@ -389,23 +423,6 @@ namespace ELearningPlatform
             review2.ShowReview();
             Console.WriteLine();
             review3.ShowReview();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             Console.ReadKey();
         }
