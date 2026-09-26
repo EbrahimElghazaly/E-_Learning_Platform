@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ELearningPlatform
@@ -41,7 +41,6 @@ namespace ELearningPlatform
 
 
     // Instructor
-
     public class Instructor
     {
         public int InstructorID;
