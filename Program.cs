@@ -99,7 +99,17 @@ namespace ELearningPlatform
         {
             Lessons.Add(lesson);
         }
-        public void ShowCourse()
+
+        // ---------- LSP (Ahmed Khalifa) ----------
+        // The "contract" every Course (and any future subtype) must honor:
+        // always return a valid, non-negative final price. No exceptions,
+        // no special cases the caller needs to know about.
+        public virtual double GetFinalPrice()
+        {
+            return Price;
+        }
+
+        public virtual void ShowCourse()
         {
             Console.WriteLine("====================================");
             Console.WriteLine("Course ID: " + CourseID);
@@ -122,6 +132,64 @@ namespace ELearningPlatform
                 );
             }
 
+            Console.WriteLine("====================================");
+        }
+    }
+
+    // ============================================================
+    // LSP (Liskov Substitution Principle) - Ahmed Khalifa
+    // ============================================================
+    // FreeCourse and CertificateCourse are both a "Course" (IS-A relationship).
+    // Anywhere in the program that expects a "Course", either of these two
+    // can be used instead without breaking anything - that is exactly what
+    // the Liskov Substitution Principle means.
+
+    // A free/promotional course - price is always 0, no matter what.
+    public class FreeCourse : Course
+    {
+        public FreeCourse(int courseID, string title, string description, string duration,
+                           string level, string language, Instructor instructor, Category category)
+            : base(courseID, title, description, 0, duration, level, language, instructor, category)
+        {
+        }
+
+        // Still respects the base contract: returns a valid, non-negative price.
+        public override double GetFinalPrice()
+        {
+            return 0;
+        }
+
+        public override void ShowCourse()
+        {
+            base.ShowCourse();
+            Console.WriteLine("This course is FREE. Final Price: 0");
+            Console.WriteLine("====================================");
+        }
+    }
+
+    // A paid course that also includes a certificate fee on top of its price.
+    public class CertificateCourse : Course
+    {
+        public const double CertificateFee = 100;
+
+        public CertificateCourse(int courseID, string title, string description, double price,
+                                  string duration, string level, string language,
+                                  Instructor instructor, Category category)
+            : base(courseID, title, description, price, duration, level, language, instructor, category)
+        {
+        }
+
+        // Still respects the base contract: returns a valid, non-negative price.
+        public override double GetFinalPrice()
+        {
+            return Price + CertificateFee;
+        }
+
+        public override void ShowCourse()
+        {
+            base.ShowCourse();
+            Console.WriteLine("Includes Certificate Fee: " + CertificateFee);
+            Console.WriteLine("Final Price (Course + Certificate): " + GetFinalPrice());
             Console.WriteLine("====================================");
         }
     }
@@ -358,6 +426,40 @@ namespace ELearningPlatform
             course2.ShowCourse();
             Console.WriteLine();
             course3.ShowCourse();
+            Console.WriteLine();
+
+            // ============================================================
+            // LSP DEMO - Ahmed Khalifa (Liskov Substitution Principle)
+            // ============================================================
+            Console.WriteLine("========== LSP DEMO (Ahmed Khalifa) ==========");
+
+            FreeCourse freeCourse = new FreeCourse(
+                4, "Intro to Git & GitHub", "A free introductory course",
+                "5 Hours", "Beginner", "English", instructor1, category1);
+
+            CertificateCourse certificateCourse = new CertificateCourse(
+                5, "Advanced ASP.NET Core", "Deep dive with a certificate", 300,
+                "60 Hours", "Advanced", "English", instructor2, category2);
+
+            // A list of the BASE type "Course" only - holding THREE different
+            // concrete types (Course, FreeCourse, CertificateCourse).
+            List<Course> allCourses = new List<Course> { course1, freeCourse, certificateCourse };
+
+            double totalRevenue = 0;
+
+            foreach (Course course in allCourses)
+            {
+                // No "if (course is FreeCourse)" anywhere here.
+                // Every object behaves correctly as a "Course", regardless of
+                // its real type -> substituting one for another breaks nothing.
+                course.ShowCourse();
+                Console.WriteLine("Final Price To Pay: " + course.GetFinalPrice());
+                Console.WriteLine();
+                totalRevenue += course.GetFinalPrice();
+            }
+
+            Console.WriteLine("Total Revenue From These 3 Courses: " + totalRevenue);
+            Console.WriteLine("===============================================");
             Console.WriteLine();
 
             Console.WriteLine("========== ENROLLMENTS ==========");
