@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 namespace ELearningPlatform
 {
-    // ==========================================
-    // 1. MODELS (بيانات فقط - بدون أي طباعة)
-    // ==========================================
+   
 
     public class Instructor
     {
@@ -162,10 +160,7 @@ namespace ELearningPlatform
         }
     }
 
-    // ==========================================
-    // 2. SERVICES (مسؤولة عن الطباعة والعرض فقط)
-    // ==========================================
-
+   
     public class ConsolePrinter
     {
         public void PrintStudent(Student student)
@@ -245,9 +240,7 @@ namespace ELearningPlatform
         }
     }
 
-    // ==========================================
-    // 3. PROGRAM (لتشغيل التطبيق)
-    // ==========================================
+ 
 
     internal class Program
     {
