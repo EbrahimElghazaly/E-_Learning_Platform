@@ -1,19 +1,21 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ELearningPlatform
 {
-    // Instructor
+    // ==========================================
+    // 1. MODELS (بيانات فقط - بدون أي طباعة)
+    // ==========================================
 
     public class Instructor
     {
-        public int InstructorID;
-        public string Name;
-        public string Email;
-        public string Specialization;
-        public string Bio;
+        public int InstructorID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Specialization { get; set; }
+        public string Bio { get; set; }
 
-        public Instructor(int instructorID,string name,string email,string specialization,string bio)
+        public Instructor(int instructorID, string name, string email, string specialization, string bio)
         {
             InstructorID = instructorID;
             Name = name;
@@ -21,67 +23,64 @@ namespace ELearningPlatform
             Specialization = specialization;
             Bio = bio;
         }
-
-        public void ShowInfo()
-        {
-            Console.WriteLine("Instructor ID: " + InstructorID);
-            Console.WriteLine("Name: " + Name);
-            Console.WriteLine("Email: " + Email);
-            Console.WriteLine("Specialization: " + Specialization);
-            Console.WriteLine("Bio: " + Bio);
-        }
     }
 
-    // Student
     public class Student
     {
-        public int StudentID;
-        public string Name;
-        public string Email;
+        public int StudentID { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
 
-        public Student(int studentID,string name,string email)
+        public Student(int studentID, string name, string email)
         {
             StudentID = studentID;
             Name = name;
             Email = email;
         }
-
-        public void ShowInfo()
-        {
-            Console.WriteLine("Student ID: " + StudentID);
-            Console.WriteLine("Name: " + Name);
-            Console.WriteLine("Email: " + Email);
-        }
     }
 
-    // Category
     public class Category
     {
-        public int CategoryID;
-        public string Name;
+        public int CategoryID { get; set; }
+        public string Name { get; set; }
 
-        public Category(int categoryID,string name)
+        public Category(int categoryID, string name)
         {
             CategoryID = categoryID;
             Name = name;
         }
     }
 
-    // Course
+    public class Lesson
+    {
+        public int LessonID { get; set; }
+        public string Title { get; set; }
+        public string Duration { get; set; }
+        public int OrderNumber { get; set; }
+
+        public Lesson(int lessonID, string title, string duration, int orderNumber)
+        {
+            LessonID = lessonID;
+            Title = title;
+            Duration = duration;
+            OrderNumber = orderNumber;
+        }
+    }
+
     public class Course
     {
-        public int CourseID;
-        public string Title;
-        public string Description;
-        public double Price;
-        public string Duration;
-        public string Level;
-        public string Language;
-        public Instructor Instructor;
-        public Category Category;
-        public List<Lesson> Lessons;
+        public int CourseID { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        public string Duration { get; set; }
+        public string Level { get; set; }
+        public string Language { get; set; }
+        public Instructor Instructor { get; set; }
+        public Category Category { get; set; }
+        public List<Lesson> Lessons { get; set; }
 
-        public Course(int courseID,string title,string description,double price,string duration,string level,string language,Instructor instructor,Category category)
+        public Course(int courseID, string title, string description, double price, string duration, string level, string language, Instructor instructor, Category category)
         {
             CourseID = courseID;
             Title = title;
@@ -99,62 +98,19 @@ namespace ELearningPlatform
         {
             Lessons.Add(lesson);
         }
-        public void ShowCourse()
-        {
-            Console.WriteLine("====================================");
-            Console.WriteLine("Course ID: " + CourseID);
-            Console.WriteLine("Title: " + Title);
-            Console.WriteLine("Description: " + Description);
-            Console.WriteLine("Price: " + Price);
-            Console.WriteLine("Duration: " + Duration);
-            Console.WriteLine("Level: " + Level);
-            Console.WriteLine("Language: " + Language);
-            Console.WriteLine("Instructor: " + Instructor.Name);
-            Console.WriteLine("Category: " + Category.Name);
-            Console.WriteLine("Lessons:");
-
-            foreach (Lesson lesson in Lessons)
-            {
-                Console.WriteLine(
-                    lesson.LessonID + " - " +
-                    lesson.Title + " - " +
-                    lesson.Duration
-                );
-            }
-
-            Console.WriteLine("====================================");
-        }
     }
 
-    // Lesson
-    public class Lesson
-    {
-        public int LessonID;
-        public string Title;
-        public string Duration;
-        public int OrderNumber;
-
-        public Lesson(int lessonID,string title,string duration,int orderNumber)
-        {
-            LessonID = lessonID;
-            Title = title;
-            Duration = duration;
-            OrderNumber = orderNumber;
-        }
-    }
-
-    // Enrollment
     public class Enrollment
     {
-        public int EnrollmentID;
-        public Student Student;
-        public Course Course;
-        public DateTime EnrollDate;
-        public string Status;
-        public double Amount;
-        public string PaymentMethod;
+        public int EnrollmentID { get; set; }
+        public Student Student { get; set; }
+        public Course Course { get; set; }
+        public DateTime EnrollDate { get; set; }
+        public string Status { get; set; }
+        public double Amount { get; set; }
+        public string PaymentMethod { get; set; }
 
-        public Enrollment(int enrollmentID,Student student,Course course,DateTime enrollDate,string status,double amount,string paymentMethod)
+        public Enrollment(int enrollmentID, Student student, Course course, DateTime enrollDate, string status, double amount, string paymentMethod)
         {
             EnrollmentID = enrollmentID;
             Student = student;
@@ -164,31 +120,18 @@ namespace ELearningPlatform
             Amount = amount;
             PaymentMethod = paymentMethod;
         }
-
-        public void ShowEnrollment()
-        {
-            Console.WriteLine("====================================");
-            Console.WriteLine("Enrollment ID: " + EnrollmentID);
-            Console.WriteLine("Student: " + Student.Name);
-            Console.WriteLine("Course: " + Course.Title);
-            Console.WriteLine("Enroll Date: " + EnrollDate);
-            Console.WriteLine("Status: " + Status);
-            Console.WriteLine("Amount: " + Amount);
-            Console.WriteLine("Payment Method: " + PaymentMethod);
-            Console.WriteLine("====================================");
-        }
     }
 
-    // Payment
     public class Payment
     {
-        public int PaymentID;
-        public Enrollment Enrollment;
-        public double Amount;
-        public string PaymentMethod;
-        public DateTime PaymentDate;
-        public string Status;
-        public Payment(int paymentID,Enrollment enrollment,double amount,string paymentMethod,DateTime paymentDate,string status)
+        public int PaymentID { get; set; }
+        public Enrollment Enrollment { get; set; }
+        public double Amount { get; set; }
+        public string PaymentMethod { get; set; }
+        public DateTime PaymentDate { get; set; }
+        public string Status { get; set; }
+
+        public Payment(int paymentID, Enrollment enrollment, double amount, string paymentMethod, DateTime paymentDate, string status)
         {
             PaymentID = paymentID;
             Enrollment = enrollment;
@@ -197,32 +140,18 @@ namespace ELearningPlatform
             PaymentDate = paymentDate;
             Status = status;
         }
-
-        public void ShowPayment()
-        {
-            Console.WriteLine("====================================");
-            Console.WriteLine("Payment ID: " + PaymentID);
-            Console.WriteLine("Student: " + Enrollment.Student.Name);
-            Console.WriteLine("Course: " + Enrollment.Course.Title);
-            Console.WriteLine("Amount: " + Amount);
-            Console.WriteLine("Payment Method: " + PaymentMethod);
-            Console.WriteLine("Payment Date: " + PaymentDate);
-            Console.WriteLine("Status: " + Status);
-            Console.WriteLine("====================================");
-        }
     }
 
-    // Review
     public class Review
     {
-        public int ReviewID;
-        public Student Student;
-        public Course Course;
-        public int Rating;
-        public string Comment;
-        public DateTime ReviewDate;
+        public int ReviewID { get; set; }
+        public Student Student { get; set; }
+        public Course Course { get; set; }
+        public int Rating { get; set; }
+        public string Comment { get; set; }
+        public DateTime ReviewDate { get; set; }
 
-        public Review(int reviewID,Student student,Course course,int rating,string comment,DateTime reviewDate)
+        public Review(int reviewID, Student student, Course course, int rating, string comment, DateTime reviewDate)
         {
             ReviewID = reviewID;
             Student = student;
@@ -231,71 +160,127 @@ namespace ELearningPlatform
             Comment = comment;
             ReviewDate = reviewDate;
         }
+    }
 
-        public void ShowReview()
+    // ==========================================
+    // 2. SERVICES (مسؤولة عن الطباعة والعرض فقط)
+    // ==========================================
+
+    public class ConsolePrinter
+    {
+        public void PrintStudent(Student student)
+        {
+            Console.WriteLine("Student ID: " + student.StudentID);
+            Console.WriteLine("Name: " + student.Name);
+            Console.WriteLine("Email: " + student.Email);
+        }
+
+        public void PrintInstructor(Instructor instructor)
+        {
+            Console.WriteLine("Instructor ID: " + instructor.InstructorID);
+            Console.WriteLine("Name: " + instructor.Name);
+            Console.WriteLine("Email: " + instructor.Email);
+            Console.WriteLine("Specialization: " + instructor.Specialization);
+            Console.WriteLine("Bio: " + instructor.Bio);
+        }
+
+        public void PrintCourse(Course course)
         {
             Console.WriteLine("====================================");
-            Console.WriteLine("Review ID: " + ReviewID);
-            Console.WriteLine("Student: " + Student.Name);
-            Console.WriteLine("Course: " + Course.Title);
-            Console.WriteLine("Rating: " + Rating);
-            Console.WriteLine("Comment: " + Comment);
-            Console.WriteLine("Review Date: " + ReviewDate);
+            Console.WriteLine("Course ID: " + course.CourseID);
+            Console.WriteLine("Title: " + course.Title);
+            Console.WriteLine("Description: " + course.Description);
+            Console.WriteLine("Price: " + course.Price);
+            Console.WriteLine("Duration: " + course.Duration);
+            Console.WriteLine("Level: " + course.Level);
+            Console.WriteLine("Language: " + course.Language);
+            Console.WriteLine("Instructor: " + course.Instructor.Name);
+            Console.WriteLine("Category: " + course.Category.Name);
+            Console.WriteLine("Lessons:");
+
+            foreach (Lesson lesson in course.Lessons)
+            {
+                Console.WriteLine(lesson.LessonID + " - " + lesson.Title + " - " + lesson.Duration);
+            }
+
+            Console.WriteLine("====================================");
+        }
+
+        public void PrintEnrollment(Enrollment enrollment)
+        {
+            Console.WriteLine("====================================");
+            Console.WriteLine("Enrollment ID: " + enrollment.EnrollmentID);
+            Console.WriteLine("Student: " + enrollment.Student.Name);
+            Console.WriteLine("Course: " + enrollment.Course.Title);
+            Console.WriteLine("Enroll Date: " + enrollment.EnrollDate);
+            Console.WriteLine("Status: " + enrollment.Status);
+            Console.WriteLine("Amount: " + enrollment.Amount);
+            Console.WriteLine("Payment Method: " + enrollment.PaymentMethod);
+            Console.WriteLine("====================================");
+        }
+
+        public void PrintPayment(Payment payment)
+        {
+            Console.WriteLine("====================================");
+            Console.WriteLine("Payment ID: " + payment.PaymentID);
+            Console.WriteLine("Student: " + payment.Enrollment.Student.Name);
+            Console.WriteLine("Course: " + payment.Enrollment.Course.Title);
+            Console.WriteLine("Amount: " + payment.Amount);
+            Console.WriteLine("Payment Method: " + payment.PaymentMethod);
+            Console.WriteLine("Payment Date: " + payment.PaymentDate);
+            Console.WriteLine("Status: " + payment.Status);
+            Console.WriteLine("====================================");
+        }
+
+        public void PrintReview(Review review)
+        {
+            Console.WriteLine("====================================");
+            Console.WriteLine("Review ID: " + review.ReviewID);
+            Console.WriteLine("Student: " + review.Student.Name);
+            Console.WriteLine("Course: " + review.Course.Title);
+            Console.WriteLine("Rating: " + review.Rating);
+            Console.WriteLine("Comment: " + review.Comment);
+            Console.WriteLine("Review Date: " + review.ReviewDate);
             Console.WriteLine("====================================");
         }
     }
 
-    // Program
+    // ==========================================
+    // 3. PROGRAM (لتشغيل التطبيق)
+    // ==========================================
+
     internal class Program
     {
         static void Main(string[] args)
         {
+            ConsolePrinter printer = new ConsolePrinter();
+
             // Categories
-
-            Category category1 =new Category(1, "Programming");
-
-            Category category2 =new Category(2, "Database");
-
-            Category category3 =new Category(3, "Front-End");
-
+            Category category1 = new Category(1, "Programming");
+            Category category2 = new Category(2, "Database");
+            Category category3 = new Category(3, "Front-End");
 
             // Instructors
-
-            Instructor instructor1 =new Instructor(1,"Ahmed Mohamed","ahmed@gmail.com","C# and .NET","C# and .NET Instructor");
-
-            Instructor instructor2 = new Instructor(2, "Mohamed Ali","mohamed@gmail.com","Database","SQL Server Instructor");
-
-            Instructor instructor3 =new Instructor(3,"Sara Hassan","sara@gmail.com","Front-End","Front-End Instructor");
+            Instructor instructor1 = new Instructor(1, "Ahmed Mohamed", "ahmed@gmail.com", "C# and .NET", "C# and .NET Instructor");
+            Instructor instructor2 = new Instructor(2, "Mohamed Ali", "mohamed@gmail.com", "Database", "SQL Server Instructor");
+            Instructor instructor3 = new Instructor(3, "Sara Hassan", "sara@gmail.com", "Front-End", "Front-End Instructor");
 
             // Students
-
-            Student student1 =new Student(1,"Ibrahim Elghazaly","ibrahim@gmail.com");
-
-            Student student2 =new Student(2,"Omar Ahmed","omar@gmail.com");
-
-            Student student3 =new Student(3,"Ali Mohamed","ali@gmail.com");
+            Student student1 = new Student(1, "Ibrahim Elghazaly", "ibrahim@gmail.com");
+            Student student2 = new Student(2, "Omar Ahmed", "omar@gmail.com");
+            Student student3 = new Student(3, "Ali Mohamed", "ali@gmail.com");
 
             // Courses
-
-            Course course1 =new Course(1,"C# Programming","Learn C# Programming",150,"40 Hours","Beginner","English",instructor1,category1);
-
-            Course course2 =new Course(2,"SQL Server","Learn SQL Server and Database",120,"30 Hours","Intermediate","English",instructor2,category2);
-
-            Course course3 =new Course(3,"Front-End Development","Learn HTML CSS and JavaScript",180,"50 Hours","Beginner","English",instructor3,category3);
+            Course course1 = new Course(1, "C# Programming", "Learn C# Programming", 150, "40 Hours", "Beginner", "English", instructor1, category1);
+            Course course2 = new Course(2, "SQL Server", "Learn SQL Server and Database", 120, "30 Hours", "Intermediate", "English", instructor2, category2);
+            Course course3 = new Course(3, "Front-End Development", "Learn HTML CSS and JavaScript", 180, "50 Hours", "Beginner", "English", instructor3, category3);
 
             // Lessons
-
-            Lesson lesson1 =new Lesson(1,"Introduction to C#","20 Minutes",1);
-
-            Lesson lesson2 =new Lesson(2,"Variables and Data Types","30 Minutes",2);
-
-            Lesson lesson3 =new Lesson(3,"Classes and Objects","40 Minutes",3);
-
-            Lesson lesson4 =new Lesson(4,"Introduction to SQL","25 Minutes",1);
-
-            Lesson lesson5 =new Lesson(5,"SELECT Statement","30 Minutes",2);
-
-            // Add Lessons To Courses
+            Lesson lesson1 = new Lesson(1, "Introduction to C#", "20 Minutes", 1);
+            Lesson lesson2 = new Lesson(2, "Variables and Data Types", "30 Minutes", 2);
+            Lesson lesson3 = new Lesson(3, "Classes and Objects", "40 Minutes", 3);
+            Lesson lesson4 = new Lesson(4, "Introduction to SQL", "25 Minutes", 1);
+            Lesson lesson5 = new Lesson(5, "SELECT Statement", "30 Minutes", 2);
 
             course1.AddLesson(lesson1);
             course1.AddLesson(lesson2);
@@ -304,108 +289,73 @@ namespace ELearningPlatform
             course2.AddLesson(lesson5);
 
             // Enrollments
-
-            Enrollment enrollment1 =new Enrollment(1,student1,course1,DateTime.Now,"Active",150,"Credit Card");
-
-            Enrollment enrollment2 =new Enrollment(2,student1,course2,DateTime.Now,"Active",120,"Cash");
-
-            Enrollment enrollment3 =new Enrollment(3,student2,course1,DateTime.Now,"Active",150,"Credit Card");
-
-            Enrollment enrollment4 =new Enrollment(4,student3,course3,DateTime.Now,"Active",180,"PayPal");
+            Enrollment enrollment1 = new Enrollment(1, student1, course1, DateTime.Now, "Active", 150, "Credit Card");
+            Enrollment enrollment2 = new Enrollment(2, student1, course2, DateTime.Now, "Active", 120, "Cash");
+            Enrollment enrollment3 = new Enrollment(3, student2, course1, DateTime.Now, "Active", 150, "Credit Card");
+            Enrollment enrollment4 = new Enrollment(4, student3, course3, DateTime.Now, "Active", 180, "PayPal");
 
             // Payments
-
-            Payment payment1 =new Payment(1,enrollment1,150,"Credit Card",DateTime.Now,"Completed");
-
-            Payment payment2 =new Payment(2,enrollment2,120,"Cash",DateTime.Now,"Completed");
-
-            Payment payment3 =new Payment(3,enrollment3,150,"Credit Card",DateTime.Now,"Completed");
-
-            Payment payment4 =new Payment(4,enrollment4,180,"PayPal",DateTime.Now,"Completed");
+            Payment payment1 = new Payment(1, enrollment1, 150, "Credit Card", DateTime.Now, "Completed");
+            Payment payment2 = new Payment(2, enrollment2, 120, "Cash", DateTime.Now, "Completed");
+            Payment payment3 = new Payment(3, enrollment3, 150, "Credit Card", DateTime.Now, "Completed");
+            Payment payment4 = new Payment(4, enrollment4, 180, "PayPal", DateTime.Now, "Completed");
 
             // Reviews
-
-            Review review1 =new Review(1,student1,course1,5,"Very good course",DateTime.Now);
-
-            Review review2 =new Review(2,student2,course1,4,"Good course",DateTime.Now);
-
-            Review review3 =new Review(3,student1,course2,5,"Very useful SQL course",DateTime.Now);
+            Review review1 = new Review(1, student1, course1, 5, "Very good course", DateTime.Now);
+            Review review2 = new Review(2, student2, course1, 4, "Good course", DateTime.Now);
+            Review review3 = new Review(3, student1, course2, 5, "Very useful SQL course", DateTime.Now);
 
             // Display
-
             Console.WriteLine("========== STUDENTS ==========");
-
-            student1.ShowInfo();
+            printer.PrintStudent(student1);
             Console.WriteLine();
-            student2.ShowInfo();
+            printer.PrintStudent(student2);
             Console.WriteLine();
-            student3.ShowInfo();
+            printer.PrintStudent(student3);
             Console.WriteLine();
 
             Console.WriteLine("========== INSTRUCTORS ==========");
-
-            instructor1.ShowInfo();
+            printer.PrintInstructor(instructor1);
             Console.WriteLine();
-            instructor2.ShowInfo();
+            printer.PrintInstructor(instructor2);
             Console.WriteLine();
-            instructor3.ShowInfo();
+            printer.PrintInstructor(instructor3);
             Console.WriteLine();
 
             Console.WriteLine("========== COURSES ==========");
-
-            course1.ShowCourse();
+            printer.PrintCourse(course1);
             Console.WriteLine();
-            course2.ShowCourse();
+            printer.PrintCourse(course2);
             Console.WriteLine();
-            course3.ShowCourse();
+            printer.PrintCourse(course3);
             Console.WriteLine();
 
             Console.WriteLine("========== ENROLLMENTS ==========");
-
-            enrollment1.ShowEnrollment();
+            printer.PrintEnrollment(enrollment1);
             Console.WriteLine();
-            enrollment2.ShowEnrollment();
+            printer.PrintEnrollment(enrollment2);
             Console.WriteLine();
-            enrollment3.ShowEnrollment();
+            printer.PrintEnrollment(enrollment3);
             Console.WriteLine();
-            enrollment4.ShowEnrollment();
+            printer.PrintEnrollment(enrollment4);
             Console.WriteLine();
 
             Console.WriteLine("========== PAYMENTS ==========");
-
-            payment1.ShowPayment();
+            printer.PrintPayment(payment1);
             Console.WriteLine();
-            payment2.ShowPayment();
+            printer.PrintPayment(payment2);
             Console.WriteLine();
-            payment3.ShowPayment();
+            printer.PrintPayment(payment3);
             Console.WriteLine();
-            payment4.ShowPayment();
+            printer.PrintPayment(payment4);
             Console.WriteLine();
 
             Console.WriteLine("========== REVIEWS ==========");
-
-            review1.ShowReview();
+            printer.PrintReview(review1);
             Console.WriteLine();
-            review2.ShowReview();
+            printer.PrintReview(review2);
             Console.WriteLine();
-            review3.ShowReview();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            printer.PrintReview(review3);
 
             Console.ReadKey();
         }
