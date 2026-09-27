@@ -1,60 +1,38 @@
-🎓 E-Learning Platform
+📌 نظرة عامة على المشروع
+منصة تعليمية إلكترونية مبنية بلغة C# و .NET باستخدام Console Application، مع تطبيق مفاهيم Object-Oriented Programming (OOP) و مبادئ SOLID الخمسة بشكل عملي.
 
-A C# / .NET Console-based E-Learning Platform designed to demonstrate Object-Oriented Programming (OOP) concepts and the practical application of the five SOLID principles through clean code and refactoring.
+هذا المشروع يوضح رحلة تطوير كاملة:
 
-📌 Project Overview
+النسخة الأولى: كود أساسي بدون SOLID (لإظهار المشاكل)
 
-This project is an educational E-Learning Platform built using C# and .NET as a Console Application.
+النسخة النهائية: إعادة هيكلة كاملة بتطبيق SOLID
 
-The project demonstrates:
+👨‍💻 فريق العمل
+الدور	الاسم	المسؤولية
+🏗️ صاحب الفكرة والكود الأساسي	Ibrahim Mohamed Elghazaly	بناء الكود الأساسي بدون SOLID
+🔵 SRP	Mohamed Saeed	مبدأ المسؤولية الواحدة
+🟢 OCP	Ziad Elfeky	مبدأ الفتح/الإغلاق
+🟡 LSP	Ahmed Khalifa	مبدأ استبدال ليزكوف
+🟠 Inheritance	Ghofran Mohamed	مبدأ الوراثة
+🔴 DIP	Youssef Hegazy	مبدأ انعكاس الاعتماد
+🟣 ISP	(مُطبَّق في الكود)	مبدأ فصل الواجهات
+🎯 أهداف المشروع
+✅ التدرب على C# و .NET
 
-Object-Oriented Programming (OOP)
-Encapsulation
-Inheritance
-Polymorphism
-Abstraction
-SOLID Principles
-Refactoring
-Clean Code Concepts
-Relationships between real-world entities
+✅ فهم OOP بعمق
 
-The project was developed in two main stages:
+✅ نمذجة كيانات واقعية
 
-Version 1: Basic C# and OOP implementation without SOLID
-Version 2: Refactored version with practical application of the five SOLID principles
+✅ فهم العلاقات بين الكائنات
 
-The second version focuses on improving maintainability, extensibility, and separation of responsibilities.
+✅ تطبيق مبادئ SOLID الخمسة
 
-👨‍💻 Team Members
-Role	Name	Responsibility
-🏗️ Project Owner & Base Code	Ibrahim Mohamed Elghazaly	Project idea and initial implementation
-🔵 SRP	Mohamed Saeed	Single Responsibility Principle
-🟢 OCP	Ziad Elfeky	Open/Closed Principle
-🟡 LSP	Ahmed Khalifa	Liskov Substitution Principle
-🟠 OOP / Inheritance	Ghofran Mohamed	Inheritance and OOP concepts
-🔴 DIP	Youssef Hegazy	Dependency Inversion Principle
+✅ إعادة هيكلة كود موجود (Refactoring)
 
-🎯 Project Goals
+✅ تجهيز المشروع لـ API وقاعدة بيانات مستقبلاً
 
-The main goals of this project are:
-
-✅ Practice C# and .NET
-✅ Understand OOP concepts
-✅ Model real-world entities
-✅ Understand relationships between objects
-✅ Apply the five SOLID principles
-✅ Refactor an existing codebase
-✅ Improve code maintainability
-✅ Prepare the project for future API and database integration
-🛠️ Technologies Used
-C#
-.NET
-Object-Oriented Programming (OOP)
-SOLID Principles
-Console Application
-Git
-GitHub
-🧱 Project Structure
+🏗️ هيكل المشروع
+text
 E-Learning-Platform
 │
 ├── E-Learning-Platform.sln
@@ -86,171 +64,40 @@ E-Learning-Platform
 ├── Program.cs
 │
 └── README.md
-🧠 OOP Concepts
-
-The project uses the main Object-Oriented Programming concepts.
-
-1. Encapsulation
-
-Each entity stores its related data and behavior inside a class.
-
-Examples:
-
-Student
-Instructor
-Course
-Lesson
-Enrollment
-Payment
-Review
-2. Inheritance
-
-Inheritance is an OOP concept, not one of the five SOLID principles.
-
-The project uses inheritance to create specialized course types from the base Course class.
-
-public class Course
-{
-    public virtual double GetFinalPrice()
-    {
-        return Price;
-    }
-}
-
-public class FreeCourse : Course
-{
-    public override double GetFinalPrice()
-    {
-        return 0;
-    }
-}
-
-public class CertificateCourse : Course
-{
-    public override double GetFinalPrice()
-    {
-        return Price + CertificateFee;
-    }
-}
-
-public class DiscountCourse : Course
-{
-    public override double GetFinalPrice()
-    {
-        return Price - (Price * DiscountPercentage / 100);
-    }
-}
-
-This allows specialized classes to reuse common properties and behavior from Course.
-
-3. Polymorphism
-
-Polymorphism is demonstrated by storing different course types in a collection of the base type:
-
-List<Course> allCourses =
-    new List<Course>
-    {
-        course1,
-        course2,
-        course3,
-        freeCourse,
-        certificateCourse,
-        discountCourse
-    };
-
-Then:
-
-foreach (Course course in allCourses)
-{
-    Console.WriteLine(course.GetFinalPrice());
-}
-
-The same method:
-
-GetFinalPrice()
-
-can produce different results depending on the actual object type.
-
-4. Abstraction
-
-The project uses interfaces to define contracts without exposing implementation details.
-
-Example:
-
-public interface IEnrollment
-{
-    string StudentName { get; }
-    string CourseTitle { get; }
-}
-
-The Payment class can work with the abstraction instead of directly depending on the concrete Enrollment class.
-
-🧩 SOLID Principles
-
-The project demonstrates all five SOLID principles:
-
-S → Single Responsibility Principle
-O → Open/Closed Principle
-L → Liskov Substitution Principle
-I → Interface Segregation Principle
-D → Dependency Inversion Principle
+🧱 تطبيق مبادئ SOLID خطوة بخطوة
 🔵 1. SRP — Single Responsibility Principle
+المسؤول: Mohamed Saeed
 
-Responsible: Mohamed Saeed
+كلاس واحد = مسؤولية واحدة
 
-Definition
+التطبيق في الكود:
 
-A class should have one reason to change.
+ConsolePrinter مسؤول فقط عن الطباعة (فصل العرض عن البيانات)
 
-The project separates the responsibility of displaying information from the entity classes.
+كل Model مسؤول عن بياناته فقط
 
-For example:
+لا يوجد كلاس يقوم بأكثر من مسؤولية
 
-public class ConsolePrinter
+csharp
+public class ConsolePrinter : ICourseDisplay, IEnrollmentDisplay,
+                              IPaymentDisplay, IReviewDisplay
 {
-    public void ShowStudent(Student student)
-    {
-        Console.WriteLine("Student ID: " + student.StudentID);
-        Console.WriteLine("Name: " + student.Name);
-        Console.WriteLine("Email: " + student.Email);
-    }
-
-    public void ShowCourse(Course course)
-    {
-        // Display course information
-    }
+    public void ShowStudent(Student student) { ... }
+    public void ShowCourse(Course course) { ... }
+    // مسؤولية واحدة: الطباعة
 }
-
-ConsolePrinter has one main responsibility:
-
-Displaying system data in the Console.
-
-The models represent the application's data, while ConsolePrinter handles presentation.
-
-Benefits
-Easier maintenance
-Easier modification
-Better separation of responsibilities
-Easier future testing
 🟢 2. OCP — Open/Closed Principle
+المسؤول: Ziad Elfeky
 
-Responsible: Ziad Elfeky
+مفتوح للتوسع، مغلق للتعديل
 
-Definition
+التطبيق في الكود:
 
-Software entities should be open for extension but closed for modification.
+إضافة نوع دورة جديد لا يتطلب تعديل Course الأصلي
 
-The base Course class defines common pricing behavior:
+كل نوع جديد يرث من Course ويعيد تعريف GetFinalPrice()
 
-public virtual double GetFinalPrice()
-{
-    return Price;
-}
-
-New course types can extend this behavior without modifying the original Course implementation.
-
-Example:
-
+csharp
 public class DiscountCourse : Course
 {
     public double DiscountPercentage;
@@ -260,698 +107,304 @@ public class DiscountCourse : Course
         return Price - (Price * DiscountPercentage / 100);
     }
 }
-
-Other course types include:
-
-Course
-├── FreeCourse
-├── CertificateCourse
-└── DiscountCourse
-Benefit
-
-If a new course type is required in the future, such as:
-
-PremiumCourse
-BundleCourse
-SeasonalDiscountCourse
-
-it can be implemented as a new class without changing the existing Course pricing logic.
+✅ إضافة FreeCourse أو CertificateCourse لم تعدل Course الأصلي.
 
 🟡 3. LSP — Liskov Substitution Principle
+المسؤول: Ahmed Khalifa
 
-Responsible: Ahmed Khalifa
+الفئة الابنة تُستخدم مكان الفئة الأم دون مشاكل
 
-Definition
+التطبيق في الكود:
 
-Objects of a derived class should be usable wherever objects of the base class are expected without breaking the application.
-
-The project demonstrates this using:
-
-List<Course> allCourses =
-    new List<Course>
-    {
-        course1,
-        course2,
-        course3,
-        freeCourse,
-        certificateCourse,
-        discountCourse
-    };
-
-All derived classes can be treated as Course.
+csharp
+List<Course> allCourses = new List<Course>
+{
+    course1,
+    course2,
+    course3,
+    freeCourse,          // FreeCourse مكان Course ✅
+    certificateCourse,   // CertificateCourse مكان Course ✅
+    discountCourse       // DiscountCourse مكان Course ✅
+};
 
 foreach (Course course in allCourses)
 {
-    Console.WriteLine(course.GetFinalPrice());
+    course.GetFinalPrice();  // يعمل مع كل الأنواع ✅
+}
+✅ جميع الأنواع الفرعية تعمل بنفس الطريقة عند استدعاء GetFinalPrice().
+
+🟠 4. Inheritance Principle — مبدأ الوراثة
+المسؤول: Ghofran Mohamed
+
+إعادة استخدام الكود عبر الوراثة الصحيحة
+
+التطبيق في الكود:
+
+csharp
+// الفئة الأم
+public class Course
+{
+    public virtual double GetFinalPrice() => Price;
 }
 
-Each derived class provides its own implementation of:
+// الفئات الابنة
+public class FreeCourse : Course          { ... }
+public class CertificateCourse : Course   { ... }
+public class DiscountCourse : Course      { ... }
+✅ كل نوع دورة يرث الخصائص المشتركة ويعيد تعريف ما يحتاجه فقط.
 
-GetFinalPrice()
+🟣 5. ISP — Interface Segregation Principle
+المسؤول: (مُطبَّق في الكود)
 
-Therefore, the base class reference can work with all supported course types.
+لا تُجبر كلاس على تنفيذ واجهات لا يحتاجها
 
-🟣 4. ISP — Interface Segregation Principle
-Definition
+التطبيق في الكود:
 
-A class should not be forced to depend on methods it does not use.
+بدلاً من واجهة واحدة ضخمة:
 
-Instead of creating one large interface:
-
+csharp
+// ❌ واجهة ضخمة
 public interface IPrinter
 {
-    void ShowCourse(Course course);
-    void ShowStudent(Student student);
-    void ShowEnrollment(Enrollment enrollment);
-    void ShowPayment(Payment payment);
-    void ShowReview(Review review);
+    void ShowCourse(...);
+    void ShowStudent(...);
+    void ShowEnrollment(...);
+    void ShowPayment(...);
+    void ShowReview(...);
 }
+تم فصلها إلى واجهات صغيرة:
 
-The project separates responsibilities into smaller interfaces:
+csharp
+public interface ICourseDisplay      { void ShowCourse(Course course); }
+public interface ILessonManagement   { void AddLesson(Lesson lesson); }
+public interface IEnrollmentDisplay  { void ShowEnrollment(Enrollment e); }
+public interface IPaymentDisplay     { void ShowPayment(Payment p); }
+public interface IReviewDisplay      { void ShowReview(Review r); }
+✅ Course ينفذ ILessonManagement فقط لأنه لا يحتاج باقي الواجهات.
 
-public interface ICourseDisplay
-{
-    void ShowCourse(Course course);
-}
-public interface ILessonManagement
-{
-    void AddLesson(Lesson lesson);
-}
-public interface IEnrollmentDisplay
-{
-    void ShowEnrollment(Enrollment enrollment);
-}
-public interface IPaymentDisplay
-{
-    void ShowPayment(Payment payment);
-}
-public interface IReviewDisplay
-{
-    void ShowReview(Review review);
-}
+🔴 6. DIP — Dependency Inversion Principle
+المسؤول: Youssef Hegazy
 
-For example:
+الاعتماد على التجريدات وليس على التطبيقات الملموسة
 
-public class Course : ILessonManagement
-{
-    public void AddLesson(Lesson lesson)
-    {
-        Lessons.Add(lesson);
-    }
-}
+التطبيق في الكود:
 
-Course implements only the interface it actually needs.
-
-Benefit
-
-Small interfaces make the system easier to:
-
-Understand
-Maintain
-Extend
-Test
-🔴 5. DIP — Dependency Inversion Principle
-
-Responsible: Youssef Hegazy
-
-Definition
-
-High-level modules should not depend directly on low-level concrete implementations. Both should depend on abstractions.
-
-The project defines:
-
+csharp
+// التجريد
 public interface IEnrollment
 {
     string StudentName { get; }
     string CourseTitle { get; }
 }
 
-Enrollment implements this abstraction:
-
-public class Enrollment : IEnrollment
-{
-    public string StudentName
-    {
-        get { return Student.Name; }
-    }
-
-    public string CourseTitle
-    {
-        get { return Course.Title; }
-    }
-}
-
-The Payment class depends on the abstraction:
-
+// Payment يعتمد على IEnrollment وليس Enrollment
 public class Payment
 {
-    public IEnrollment Enrollment;
+    public IEnrollment Enrollment;  // ✅ تجريد وليس كلاس ملموس
 
-    public Payment(
-        int paymentID,
-        IEnrollment enrollment,
-        double amount,
-        string paymentMethod,
-        DateTime paymentDate,
-        string status)
+    public Payment(int id, IEnrollment enrollment, ...)
     {
-        PaymentID = paymentID;
         Enrollment = enrollment;
-        Amount = amount;
-        PaymentMethod = paymentMethod;
-        PaymentDate = paymentDate;
-        Status = status;
     }
 }
 
-Instead of:
+// Enrollment ينفذ التجريد
+public class Enrollment : IEnrollment
+{
+    public string StudentName => Student.Name;
+    public string CourseTitle => Course.Title;
+}
+✅ Payment لا يعرف شيئاً عن Enrollment الداخلي، فقط يعرف IEnrollment.
 
-public Enrollment Enrollment;
-
-the project uses:
-
-public IEnrollment Enrollment;
-Important Note
-
-The current project demonstrates Dependency Inversion, but it does not yet implement a full Dependency Injection container.
-
-A future ASP.NET Core version can introduce:
-
-Constructor Injection
-.NET DI Container
-Service Registration
-📊 SOLID Summary
-Principle	Meaning	Application	Responsible
-SRP	Single Responsibility	ConsolePrinter handles presentation	Mohamed Saeed
-OCP	Open/Closed	New course types extend Course	Ziad Elfeky
-LSP	Liskov Substitution	Derived courses work as Course Ahmed Khalifa
-Inh Inheritance and OOP concepts Ghofran Mohamed	
-ISP	Interface Segregation	Small specialized interfaces	Team
-DIP	Dependency Inversion	Payment depends on IEnrollment	Youssef Hegazy
-🔗 Entity Relationships
-Instructor (1) ────────► (N) Course
-
-Category   (1) ────────► (N) Course
-
-Course     (1) ────────► (N) Lesson
-
-Student    (1) ────────► (N) Enrollment ◄────── (N) Course
-
-Enrollment (1) ────────► (1) Payment
-
-Student    (1) ────────► (N) Review ◄────────── (N) Course
-
-Student    (N) ◄──────────────────────────────► (N) Course
-                     through Enrollment
-Relationship Details
-Relationship	Type	Description
-Instructor → Course	1 : N	One instructor can have multiple courses
-Category → Course	1 : N	One category can contain multiple courses
-Course → Lesson	1 : N	One course can contain multiple lessons
-Student → Enrollment	1 : N	One student can have multiple enrollments
-Course → Enrollment	1 : N	One course can have multiple enrollments
-Enrollment → Payment	1 : 1*	Business assumption that an enrollment has one payment
-Student → Review	1 : N	One student can write multiple reviews
-Course → Review	1 : N	One course can have multiple reviews
-
-Note: The Enrollment → Payment 1:1 relationship is a business assumption. The current object model does not enforce the relationship from both sides.
-
-🧩 Main Entities
+📊 ملخص SOLID مع المسؤولين
+المبدأ	المعنى	التطبيق	المسؤول
+SRP	مسؤولية واحدة	ConsolePrinter للطباعة فقط	Mohamed Saeed
+OCP	فتح/إغلاق	DiscountCourse دون تعديل Course	Ziad Elfeky
+LSP	استبدال ليزكوف	List<Course> يستقبل كل الأنواع	Ahmed Khalifa
+Inheritance	الوراثة	Course → FreeCourse/Certificate/Discount	Ghofran Mohamed
+ISP	فصل الواجهات	ICourseDisplay, IPaymentDisplay, ...	Team
+DIP	انعكاس الاعتماد	Payment يعتمد على IEnrollment	Youssef Hegazy
+🔗 العلاقات بين الكيانات
+text
+Instructor (1) ────► (N) Course
+Category   (1) ────► (N) Course
+Course     (1) ────► (N) Lesson
+Student    (1) ────► (N) Enrollment ◄──── (N) Course
+Enrollment (1) ────► (1) Payment  (عبر IEnrollment)
+Student    (1) ────► (N) Review     ◄──── (N) Course
+Student   (N) ◄────► (N) Course  (عبر Enrollment)
+العلاقة	النوع	الوصف
+Instructor → Course	1 : N	مدرب واحد ينشئ عدة دورات
+Category → Course	1 : N	تصنيف واحد يحتوي عدة دورات
+Course → Lesson	1 : N	دورة واحدة تحتوي عدة دروس
+Student → Enrollment	1 : N	طالب واحد يسجل في عدة دورات
+Course → Enrollment	1 : N	دورة واحدة بها عدة تسجيلات
+Enrollment → Payment	1 : 1	كل تسجيل له دفعة خاصة
+Student → Review	1 : N	طالب واحد يكتب عدة تقييمات
+Course → Review	1 : N	دورة واحدة لها عدة تقييمات
+🧩 الكيانات الرئيسية
 👨‍🎓 Student
-Student student1 =
-    new Student(
-        1,
-        "Ibrahim Elghazaly",
-        "ibrahim@gmail.com"
-    );
+csharp
+Student student1 = new Student(1, "Ibrahim Elghazaly", "ibrahim@gmail.com");
 👨‍🏫 Instructor
-Instructor instructor1 =
-    new Instructor(
-        1,
-        "Ahmed Mohamed",
-        "ahmed@gmail.com",
-        "C# and .NET",
-        "C# and .NET Instructor"
-    );
+csharp
+Instructor instructor1 = new Instructor(
+    1, "Ahmed Mohamed", "ahmed@gmail.com",
+    "C# and .NET", "C# and .NET Instructor");
 🗂️ Category
-Category category1 =
-    new Category(
-        1,
-        "Programming"
-    );
-📚 Course
-Course course1 =
-    new Course(
-        1,
-        "C# Programming",
-        "Learn C# Programming",
-        150,
-        "40 Hours",
-        "Beginner",
-        "English",
-        instructor1,
-        category1
-    );
-🆓 FreeCourse
-FreeCourse freeCourse =
-    new FreeCourse(
-        4,
-        "Intro to Git & GitHub",
-        "A free introductory course",
-        "5 Hours",
-        "Beginner",
-        "English",
-        instructor1,
-        category1
-    );
-🎓 CertificateCourse
-CertificateCourse certificateCourse =
-    new CertificateCourse(
-        5,
-        "Advanced ASP.NET Core",
-        "Deep dive with a certificate",
-        300,
-        "60 Hours",
-        "Advanced",
-        "English",
-        instructor2,
-        category2
-    );
-🏷️ DiscountCourse
-DiscountCourse discountCourse =
-    new DiscountCourse(
-        6,
-        "ASP.NET Core",
-        "Learn ASP.NET Core with discount",
-        200,
-        20,
-        "40 Hours",
-        "Intermediate",
-        "English",
-        instructor1,
-        category1
-    );
+csharp
+Category category1 = new Category(1, "Programming");
+📚 Course (مع أنواعه الثلاثة)
+csharp
+Course course1 = new Course(1, "C# Programming", "...", 150, "40 Hours",
+                            "Beginner", "English", instructor1, category1);
+
+FreeCourse freeCourse = new FreeCourse(4, "Intro to Git", "...", ...);
+CertificateCourse certCourse = new CertificateCourse(5, "ASP.NET", "...", 300, ...);
+DiscountCourse discCourse = new DiscountCourse(6, "ASP.NET", "...", 200, 20, ...);
 📖 Lesson
-Lesson lesson1 =
-    new Lesson(
-        1,
-        "Introduction to C#",
-        "20 Minutes",
-        1
-    );
-
-course1.AddLesson(lesson1);
-
-The AddLesson() operation is provided through:
-
-ILessonManagement
-📝 Enrollment
-Enrollment enrollment1 =
-    new Enrollment(
-        1,
-        student1,
-        course1,
-        DateTime.Now,
-        "Active",
-        150,
-        "Credit Card"
-    );
-
-Enrollment implements:
-
-IEnrollment
-💳 Payment
-Payment payment1 =
-    new Payment(
-        1,
-        enrollment1,
-        150,
-        "Credit Card",
-        DateTime.Now,
-        "Completed"
-    );
-
-Payment depends on:
-
-IEnrollment
-
-rather than directly depending on the concrete Enrollment type.
-
+csharp
+Lesson lesson1 = new Lesson(1, "Introduction to C#", "20 Minutes", 1);
+course1.AddLesson(lesson1);  // ISP: ILessonManagement
+📝 Enrollment (ينفذ IEnrollment — DIP)
+csharp
+Enrollment enrollment1 = new Enrollment(
+    1, student1, course1, DateTime.Now, "Active", 150, "Credit Card");
+💳 Payment (يعتمد على IEnrollment — DIP)
+csharp
+Payment payment1 = new Payment(
+    1, enrollment1, 150, "Credit Card", DateTime.Now, "Completed");
 ⭐ Review
-Review review1 =
-    new Review(
-        1,
-        student1,
-        course1,
-        5,
-        "Very good course",
-        DateTime.Now
-    );
-🖨️ ConsolePrinter
-
-ConsolePrinter is the main presentation component in the Console Application.
-
-It implements several small display interfaces:
-
+csharp
+Review review1 = new Review(
+    1, student1, course1, 5, "Very good course", DateTime.Now);
+🖨️ ConsolePrinter — قلب تطبيق SRP
+csharp
 public class ConsolePrinter :
     ICourseDisplay,
     IEnrollmentDisplay,
     IPaymentDisplay,
     IReviewDisplay
 {
-    public void ShowStudent(Student student)
-    {
-        // Display student information
-    }
-
-    public void ShowInstructor(Instructor instructor)
-    {
-        // Display instructor information
-    }
-
-    public void ShowCourse(Course course)
-    {
-        // Display course information
-    }
-
-    public void ShowEnrollment(Enrollment enrollment)
-    {
-        // Display enrollment information
-    }
-
-    public void ShowPayment(Payment payment)
-    {
-        // Display payment information
-    }
-
-    public void ShowReview(Review review)
-    {
-        // Display review information
-    }
+    public void ShowStudent(Student student) { ... }
+    public void ShowInstructor(Instructor instructor) { ... }
+    public void ShowCourse(Course course) { ... }
+    public void ShowEnrollment(Enrollment enrollment) { ... }
+    public void ShowPayment(Payment payment) { ... }
+    public void ShowReview(Review review) { ... }
 }
-Design Principles Demonstrated
-SRP: Presentation is separated from model classes.
-ISP: Display responsibilities are separated into focused interfaces.
-💰 Course Pricing Demonstration
+✅ كل عمليات الطباعة في مكان واحد — SRP
+✅ ينفذ واجهات صغيرة متعددة — ISP
 
-The project contains several pricing behaviors:
+▶️ كيفية تشغيل المشروع
+bash
+# 1. Clone
+git clone https://github.com/EbrahimElghazaly/E-_Learning_Platform.git
 
-Course Type	Base Price	Rule	Final Price
-Course	150	No change	150
-Course	120	No change	120
-Course	180	No change	180
-FreeCourse	0	Free	0
-CertificateCourse	300	+100 certificate fee	400
-DiscountCourse	200	20% discount	160
-Calculation
-150 + 120 + 180 + 0 + 400 + 160 = 1010
-
-Therefore:
-
-Total Final Price of Courses: 1010
-
-This value represents the sum of the final prices of the course objects. It should not be interpreted as actual business revenue from enrollments.
-
-▶️ How to Run the Project
-1. Clone the Repository
-git clone https://github.com/EbrahimElghazaly/E_Learning_Platform.git
-2. Open the Project
-cd E_Learning_Platform
-3. Build the Project
+# 2. Build
 dotnet build
-4. Run the Application
-dotnet run
-📤 Expected Output
-========== STUDENTS ==========
 
+# 3. Run
+dotnet run
+📤 المخرجات المتوقعة
+text
+========== STUDENTS ==========
 Student ID: 1
 Name: Ibrahim Elghazaly
 Email: ibrahim@gmail.com
 
-
 ========== INSTRUCTORS ==========
-
-Instructor ID: 1
-Name: Ahmed Mohamed
-Email: ahmed@gmail.com
-Specialization: C# and .NET
-Bio: C# and .NET Instructor
-
+...
 
 ========== COURSES ==========
-
 Course ID: 1
 Title: C# Programming
 Final Price: 150
-
+...
 
 ========== LSP DEMO ==========
-
-Final Price To Pay: 150
-Final Price To Pay: 120
-Final Price To Pay: 180
-Final Price To Pay: 0
-Final Price To Pay: 400
-Final Price To Pay: 160
-
-Total Final Price of Courses: 1010
-
+Final Price To Pay: 150    (Course)
+Final Price To Pay: 0      (FreeCourse)
+Final Price To Pay: 400    (CertificateCourse)
+Final Price To Pay: 160    (DiscountCourse)
+Total Revenue From Courses: 1010
 
 ========== ENROLLMENTS ==========
-
 ========== PAYMENTS ==========
-
 ========== REVIEWS ==========
-🔄 Project Versions
-Version 1 — Basic Implementation
+🛠️ التقنيات المستخدمة
+C# • .NET • OOP • SOLID • Console Application • Git • GitHub
 
-The first version focuses on:
+🌱 التحسينات المستقبلية
+🔐 تسجيل الدخول والمصادقة
 
-C# fundamentals
-Classes and Objects
-Constructors
-Collections
-Basic relationships
-Basic OOP
+🔍 البحث والفلترة
 
-It intentionally does not focus on SOLID.
+📊 لوحات تحكم للطالب والمدرب والأدمن
 
-Version 2 — Refactoring & SOLID
+💳 طرق دفع متعددة (IPaymentMethod)
 
-The second version refactors the project and introduces:
+🗄️ SQL Server + Entity Framework Core
 
-SRP
-OCP
-LSP
-ISP
-DIP
-Interfaces
-Polymorphism
-Better separation of responsibilities
-More extensible course pricing
+🌐 ASP.NET Core Web API
 
-This is the current SOLID-focused implementation.
+🔑 JWT Authentication
 
-🌱 Future Improvements
-🔐 Authentication
-Student registration
-Instructor registration
-Admin authentication
-JWT Authentication
-Role-based authorization
-🔍 Search & Filtering
-Search courses
-Filter by category
-Filter by level
-Filter by price
-Filter by instructor
-📊 Dashboards
-Student Dashboard
-Instructor Dashboard
-Admin Dashboard
-💳 Payments
+🏛️ Repository Pattern + DI Container
 
-A future version can introduce:
+🧪 اختبارات الوحدة (xUnit)
 
-IPaymentMethod
+🧼 Clean Architecture
 
-with implementations such as:
-
-CreditCardPayment
-CashPayment
-PayPalPayment
-WalletPayment
-
-This would provide another practical example of:
-
-Abstraction
-OCP
-DIP
-Polymorphism
-🗄️ Database
-
-Future database integration:
-
-SQL Server
-Entity Framework Core
-Database Migrations
-Relationships
-CRUD Operations
-🌐 Backend
-
-Future backend implementation:
-
-ASP.NET Core Web API
-RESTful APIs
-JWT Authentication
-Dependency Injection
-Repository Pattern
-Service Layer
-🧪 Testing
-Unit Testing
-xUnit
-Mocking
-Integration Testing
-🏛️ Architecture
-
-Future versions may adopt:
-
-Clean Architecture
-Separation of Concerns
-Service Layer
-Repository Layer
-🔌 Future API Endpoints
-
-A future ASP.NET Core Web API version could expose:
-
+🔌 نقاط API المستقبلية
+text
 GET     /api/students
 POST    /api/students
-
 GET     /api/courses
 POST    /api/courses
 GET     /api/courses/{id}
-
 POST    /api/enrollments
-
 POST    /api/payments
-
 POST    /api/reviews
 GET     /api/courses/{id}/reviews
+📌 ملاحظة مهمة
+المشروع مقسّم إلى مرحلتين:
 
-These endpoints are planned for a future ASP.NET Core Web API version and are not part of the current Console Application.
+Version 1 = C# أساسي + OOP + بدون SOLID (لإظهار المشاكل)
+Version 2 = نفس المشروع + Refactoring + تطبيق SOLID الكامل ✅ (هذه النسخة)
 
-🎓 Learning Outcomes
+🎓 مخرجات التعلم
+✅ بناء تطبيق C# من الصفر
 
-After completing this project, the team practiced:
+✅ نمذجة كيانات واقعية
 
-✅ Building a C# application from scratch
-✅ Creating classes and objects
-✅ Using constructors
-✅ Working with collections
-✅ Modeling real-world entities
-✅ Creating object relationships
-✅ Understanding inheritance
-✅ Understanding polymorphism
-✅ Using abstraction and interfaces
-✅ Applying SOLID principles
-✅ Refactoring existing code
-✅ Separating responsibilities
-✅ Designing extensible code
-✅ Preparing a project for future API and database integration
-🏛️ Architecture Roadmap
-C# Console Application
-        ↓
-       OOP
-        ↓
-   Clean Code
-        ↓
-      SOLID
-        ↓
-   SQL Server
-        ↓
-Entity Framework Core
-        ↓
-ASP.NET Core Web API
-        ↓
-Dependency Injection
-        ↓
-Authentication & Authorization
-        ↓
-     Frontend
-        ↓
-Complete E-Learning Platform
-📌 Important Design Notes
-SOLID
+✅ فهم OOP بعمق
 
-The project demonstrates the five official SOLID principles:
+✅ تحديد مشاكل الكود المترابط
 
-S → Single Responsibility Principle
-O → Open/Closed Principle
-L → Liskov Substitution Principle
-I → Interface Segregation Principle
-D → Dependency Inversion Principle
-Inheritance
+✅ إعادة هيكلة مشروع قائم
 
-Inheritance is not a sixth SOLID principle.
+✅ تطبيق SOLID الخمسة بشكل عملي
 
-It is an Object-Oriented Programming concept used in this project to support:
+✅ استخدام الوراثة وتعدد الأشكال
 
-Code reuse
-Polymorphism
-Specialized course types
-Dependency Inversion vs Dependency Injection
+✅ تصميم واجهات نظيفة
 
-The current project demonstrates Dependency Inversion by making:
-
-Payment
-
-depend on:
-
-IEnrollment
-
-instead of:
-
-Enrollment
-
-A future version can implement full Dependency Injection using:
-
-Constructor Injection
-.NET DI Container
-Service Registration
-👨‍💻 Team
-Name	Contribution
-Ibrahim Mohamed Elghazaly	Project idea, base implementation, integration
-Mohamed Saeed	SRP
-Ziad Elfeky	OCP
-Ahmed Khalifa	LSP
-Ghofran Mohamed	OOP / Inheritance
-Youssef Hegazy	DIP
-Team	ISP and final integration
-⭐ Project Vision
-
-The goal is to transform the current educational Console Application into a complete and scalable E-Learning Platform.
-
-Console App
-     ↓
-OOP
-     ↓
-SOLID
-     ↓
-Clean Code
-     ↓
-Database
-     ↓
-ASP.NET Core API
-     ↓
-Authentication
-     ↓
-Frontend
-     ↓
-Complete E-Learning Platform
-❤️ Final Message
-
-This project represents a practical learning journey from basic C# programming and OOP to SOLID principles, refactoring, abstraction, polymorphism, and clean code.
-
-It provides a foundation that can later evolve into a complete ASP.NET Core + SQL Server E-Learning Platform.
-
+⭐ الرؤية المستقبلية
+text
+Console App → Clean Code → SOLID → SQL Server → EF Core
+     → ASP.NET Core API → Auth → Frontend → Complete Platform
+👨‍💻 الفريق
+<div align="center">
+🏗️ Ibrahim Mohamed Elghazaly	صاحب الفكرة والكود الأساسي
+🔵 Mohamed Saeed	SRP
+🟢 Ziad Elfeky	OCP
+🟡 Ahmed Khalifa	LSP
+🟠 Ghofran Mohamed	Inheritance
+🔴 Youssef Hegazy	DIP
+</div>
+<div align="center">
+🌟 لا تنسَ عمل Star للمستودع إذا أعجبك المشروع! 🌟
 Made with ❤️ by Ibrahim Mohamed Elghazaly & Team
+
+</div>
