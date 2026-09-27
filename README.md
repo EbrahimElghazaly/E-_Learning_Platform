@@ -1,721 +1,829 @@
-# 🎓 E-Learning Platform - C#
+🎓 E-Learning Platform
 
-<div align="center">
+A C# / .NET Console-based E-Learning Platform designed to demonstrate Object-Oriented Programming (OOP) concepts and the practical application of the five SOLID principles through clean code and refactoring.
 
-![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![OOP](https://img.shields.io/badge/OOP-Object--Oriented-blue?style=for-the-badge)
-![Console](https://img.shields.io/badge/Console-Application-black?style=for-the-badge)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+📌 Project Overview
 
-A simple **Console-Based E-Learning Platform** built with **C#** and **Object-Oriented Programming (OOP)** concepts.
+This project is an educational E-Learning Platform built using C# and .NET as a Console Application.
 
-This project represents the **first version** of an educational platform where students can enroll in courses, instructors can create courses, courses contain lessons, students can make payments, and students can add reviews.
+The project demonstrates:
 
-> 🚀 This version is intentionally implemented **without SOLID principles**.
->
-> The main purpose is to first build the project using a simple and direct approach, then refactor the same project later by applying the **5 SOLID principles**.
+Object-Oriented Programming (OOP)
+Encapsulation
+Inheritance
+Polymorphism
+Abstraction
+SOLID Principles
+Refactoring
+Clean Code Concepts
+Relationships between real-world entities
 
-</div>
+The project was developed in two main stages:
 
----
+Version 1: Basic C# and OOP implementation without SOLID
+Version 2: Refactored version with practical application of the five SOLID principles
 
-## 📌 Project Overview
+The second version focuses on improving maintainability, extensibility, and separation of responsibilities.
 
-The **E-Learning Platform** is a C# Console Application designed to simulate the basic operations of an online learning system.
+👨‍💻 Team Members
+Role	Name	Responsibility
+🏗️ Project Owner & Base Code	Ibrahim Mohamed Elghazaly	Project idea and initial implementation
+🔵 SRP	Mohamed Saeed	Single Responsibility Principle
+🟢 OCP	Ziad Elfeky	Open/Closed Principle
+🟡 LSP	Ahmed Khalifa	Liskov Substitution Principle
+🟠 OOP / Inheritance	Ghofran Mohamed	Inheritance and OOP concepts
+🔴 DIP	Youssef Hegazy	Dependency Inversion Principle
 
-The system contains several main entities:
+🎯 Project Goals
 
-| Entity | Description |
-|--------|-------------|
-| 👨‍🎓 **Student** | A student registered on the platform |
-| 👨‍🏫 **Instructor** | The person who creates and manages courses |
-| 📚 **Course** | An educational course available on the platform |
-| 🗂️ **Category** | The category of a course |
-| 📖 **Lesson** | A lesson inside a course |
-| 📝 **Enrollment** | Registration of a student in a course |
-| 💳 **Payment** | A payment made for an enrollment |
-| ⭐ **Review** | A student's review of a course |
+The main goals of this project are:
 
-The project focuses on understanding:
-
-- ✅ Classes and Objects
-- ✅ Constructors
-- ✅ Properties
-- ✅ Encapsulation
-- ✅ Object Relationships
-- ✅ Collections
-- ✅ Basic OOP
-- ✅ Entity Relationships
-- ✅ C# Programming Fundamentals
-
----
-
-## 🎯 Project Goals
-
-1. Practice C# programming.
-2. Understand Object-Oriented Programming.
-3. Create classes that represent real-world entities.
-4. Understand relationships between objects.
-5. Build a simple E-Learning system.
-6. Practice creating and using objects.
-7. Understand the problems that can appear in a project without SOLID.
-8. Prepare the project for a future SOLID refactoring.
-
----
-
-## 🏗️ Project Structure
-
-```text
+✅ Practice C# and .NET
+✅ Understand OOP concepts
+✅ Model real-world entities
+✅ Understand relationships between objects
+✅ Apply the five SOLID principles
+✅ Refactor an existing codebase
+✅ Improve code maintainability
+✅ Prepare the project for future API and database integration
+🛠️ Technologies Used
+C#
+.NET
+Object-Oriented Programming (OOP)
+SOLID Principles
+Console Application
+Git
+GitHub
+🧱 Project Structure
 E-Learning-Platform
 │
 ├── E-Learning-Platform.sln
 │
 ├── Models
-│   ├── Student.cs
 │   ├── Instructor.cs
+│   ├── Student.cs
 │   ├── Category.cs
 │   ├── Course.cs
+│   ├── FreeCourse.cs
+│   ├── CertificateCourse.cs
+│   ├── DiscountCourse.cs
 │   ├── Lesson.cs
 │   ├── Enrollment.cs
 │   ├── Payment.cs
 │   └── Review.cs
 │
-├── Services
-│   ├── StudentService.cs
-│   ├── CourseService.cs
-│   ├── EnrollmentService.cs
-│   └── PaymentService.cs
-│
 ├── Interfaces
-│   ├── IPaymentMethod.cs
-│   └── ...
+│   ├── ICourseDisplay.cs
+│   ├── ILessonManagement.cs
+│   ├── IEnrollmentDisplay.cs
+│   ├── IPaymentDisplay.cs
+│   ├── IReviewDisplay.cs
+│   └── IEnrollment.cs
+│
+├── Services
+│   └── ConsolePrinter.cs
 │
 ├── Program.cs
 │
 └── README.md
-```
+🧠 OOP Concepts
 
----
+The project uses the main Object-Oriented Programming concepts.
 
-## 🔗 Entity Relationships
+1. Encapsulation
 
-```text
-Instructor
-    │ 1
-    │ N
-    ▼
-  Course
-    │
-    ├───────────────┐
-    │ N             │ N
-    ▼               ▼
- Lesson         Enrollment
-                    │
-                    ▼
-                 Payment
+Each entity stores its related data and behavior inside a class.
 
-Category
-    │ 1
-    │ N
-    ▼
-  Course
+Examples:
 
 Student
-    ├───────────────► Enrollment
-    └───────────────► Review
+Instructor
+Course
+Lesson
+Enrollment
+Payment
+Review
+2. Inheritance
+
+Inheritance is an OOP concept, not one of the five SOLID principles.
+
+The project uses inheritance to create specialized course types from the base Course class.
+
+public class Course
+{
+    public virtual double GetFinalPrice()
+    {
+        return Price;
+    }
+}
+
+public class FreeCourse : Course
+{
+    public override double GetFinalPrice()
+    {
+        return 0;
+    }
+}
+
+public class CertificateCourse : Course
+{
+    public override double GetFinalPrice()
+    {
+        return Price + CertificateFee;
+    }
+}
+
+public class DiscountCourse : Course
+{
+    public override double GetFinalPrice()
+    {
+        return Price - (Price * DiscountPercentage / 100);
+    }
+}
+
+This allows specialized classes to reuse common properties and behavior from Course.
+
+3. Polymorphism
+
+Polymorphism is demonstrated by storing different course types in a collection of the base type:
+
+List<Course> allCourses =
+    new List<Course>
+    {
+        course1,
+        course2,
+        course3,
+        freeCourse,
+        certificateCourse,
+        discountCourse
+    };
+
+Then:
+
+foreach (Course course in allCourses)
+{
+    Console.WriteLine(course.GetFinalPrice());
+}
+
+The same method:
+
+GetFinalPrice()
+
+can produce different results depending on the actual object type.
+
+4. Abstraction
+
+The project uses interfaces to define contracts without exposing implementation details.
+
+Example:
+
+public interface IEnrollment
+{
+    string StudentName { get; }
+    string CourseTitle { get; }
+}
+
+The Payment class can work with the abstraction instead of directly depending on the concrete Enrollment class.
+
+🧩 SOLID Principles
+
+The project demonstrates all five SOLID principles:
+
+S → Single Responsibility Principle
+O → Open/Closed Principle
+L → Liskov Substitution Principle
+I → Interface Segregation Principle
+D → Dependency Inversion Principle
+🔵 1. SRP — Single Responsibility Principle
+
+Responsible: Mohamed Saeed
+
+Definition
+
+A class should have one reason to change.
+
+The project separates the responsibility of displaying information from the entity classes.
+
+For example:
+
+public class ConsolePrinter
+{
+    public void ShowStudent(Student student)
+    {
+        Console.WriteLine("Student ID: " + student.StudentID);
+        Console.WriteLine("Name: " + student.Name);
+        Console.WriteLine("Email: " + student.Email);
+    }
+
+    public void ShowCourse(Course course)
+    {
+        // Display course information
+    }
+}
+
+ConsolePrinter has one main responsibility:
+
+Displaying system data in the Console.
+
+The models represent the application's data, while ConsolePrinter handles presentation.
+
+Benefits
+Easier maintenance
+Easier modification
+Better separation of responsibilities
+Easier future testing
+🟢 2. OCP — Open/Closed Principle
+
+Responsible: Ziad Elfeky
+
+Definition
+
+Software entities should be open for extension but closed for modification.
+
+The base Course class defines common pricing behavior:
+
+public virtual double GetFinalPrice()
+{
+    return Price;
+}
+
+New course types can extend this behavior without modifying the original Course implementation.
+
+Example:
+
+public class DiscountCourse : Course
+{
+    public double DiscountPercentage;
+
+    public override double GetFinalPrice()
+    {
+        return Price - (Price * DiscountPercentage / 100);
+    }
+}
+
+Other course types include:
 
 Course
-    ├───────────────► Enrollment
-    ├───────────────► Lesson
-    └───────────────► Review
-```
+├── FreeCourse
+├── CertificateCourse
+└── DiscountCourse
+Benefit
 
-### Relationship Summary
+If a new course type is required in the future, such as:
 
-| Relationship | Type | Description |
-|--------------|------|-------------|
-| Instructor → Course | 1 : N | One instructor can create many courses |
-| Category → Course | 1 : N | One category can contain many courses |
-| Course → Lesson | 1 : N | One course can contain many lessons |
-| Student → Enrollment | 1 : N | One student can enroll in many courses |
-| Course → Enrollment | 1 : N | One course can have many enrollments |
-| Enrollment → Payment | 1 : 1 | Each enrollment can have its own payment |
-| Student → Review | 1 : N | One student can write multiple reviews |
-| Course → Review | 1 : N | One course can have multiple reviews |
-| Student ↔ Course | N : N | Represented through **Enrollment** |
+PremiumCourse
+BundleCourse
+SeasonalDiscountCourse
 
----
+it can be implemented as a new class without changing the existing Course pricing logic.
 
-## 🧩 Entities Details
+🟡 3. LSP — Liskov Substitution Principle
 
-### 👨‍🎓 Student
+Responsible: Ahmed Khalifa
 
-**Properties:** `StudentID`, `Name`, `Email`
+Definition
 
-```csharp
-Student student1 = new Student(1, "Ahmed Mohamed", "ahmed@gmail.com");
-Student student2 = new Student(2, "Mohamed Ali", "mohamed@gmail.com");
-Student student3 = new Student(3, "Ali Mohamed", "ali@gmail.com");
-```
+Objects of a derived class should be usable wherever objects of the base class are expected without breaking the application.
 
-The student can **enroll in courses** and **write reviews** for courses.
+The project demonstrates this using:
 
----
+List<Course> allCourses =
+    new List<Course>
+    {
+        course1,
+        course2,
+        course3,
+        freeCourse,
+        certificateCourse,
+        discountCourse
+    };
 
-### 👨‍🏫 Instructor
+All derived classes can be treated as Course.
 
-**Properties:** `InstructorID`, `Name`, `Email`
+foreach (Course course in allCourses)
+{
+    Console.WriteLine(course.GetFinalPrice());
+}
 
-```csharp
+Each derived class provides its own implementation of:
+
+GetFinalPrice()
+
+Therefore, the base class reference can work with all supported course types.
+
+🟣 4. ISP — Interface Segregation Principle
+Definition
+
+A class should not be forced to depend on methods it does not use.
+
+Instead of creating one large interface:
+
+public interface IPrinter
+{
+    void ShowCourse(Course course);
+    void ShowStudent(Student student);
+    void ShowEnrollment(Enrollment enrollment);
+    void ShowPayment(Payment payment);
+    void ShowReview(Review review);
+}
+
+The project separates responsibilities into smaller interfaces:
+
+public interface ICourseDisplay
+{
+    void ShowCourse(Course course);
+}
+public interface ILessonManagement
+{
+    void AddLesson(Lesson lesson);
+}
+public interface IEnrollmentDisplay
+{
+    void ShowEnrollment(Enrollment enrollment);
+}
+public interface IPaymentDisplay
+{
+    void ShowPayment(Payment payment);
+}
+public interface IReviewDisplay
+{
+    void ShowReview(Review review);
+}
+
+For example:
+
+public class Course : ILessonManagement
+{
+    public void AddLesson(Lesson lesson)
+    {
+        Lessons.Add(lesson);
+    }
+}
+
+Course implements only the interface it actually needs.
+
+Benefit
+
+Small interfaces make the system easier to:
+
+Understand
+Maintain
+Extend
+Test
+🔴 5. DIP — Dependency Inversion Principle
+
+Responsible: Youssef Hegazy
+
+Definition
+
+High-level modules should not depend directly on low-level concrete implementations. Both should depend on abstractions.
+
+The project defines:
+
+public interface IEnrollment
+{
+    string StudentName { get; }
+    string CourseTitle { get; }
+}
+
+Enrollment implements this abstraction:
+
+public class Enrollment : IEnrollment
+{
+    public string StudentName
+    {
+        get { return Student.Name; }
+    }
+
+    public string CourseTitle
+    {
+        get { return Course.Title; }
+    }
+}
+
+The Payment class depends on the abstraction:
+
+public class Payment
+{
+    public IEnrollment Enrollment;
+
+    public Payment(
+        int paymentID,
+        IEnrollment enrollment,
+        double amount,
+        string paymentMethod,
+        DateTime paymentDate,
+        string status)
+    {
+        PaymentID = paymentID;
+        Enrollment = enrollment;
+        Amount = amount;
+        PaymentMethod = paymentMethod;
+        PaymentDate = paymentDate;
+        Status = status;
+    }
+}
+
+Instead of:
+
+public Enrollment Enrollment;
+
+the project uses:
+
+public IEnrollment Enrollment;
+Important Note
+
+The current project demonstrates Dependency Inversion, but it does not yet implement a full Dependency Injection container.
+
+A future ASP.NET Core version can introduce:
+
+Constructor Injection
+.NET DI Container
+Service Registration
+📊 SOLID Summary
+Principle	Meaning	Application	Responsible
+SRP	Single Responsibility	ConsolePrinter handles presentation	Mohamed Saeed
+OCP	Open/Closed	New course types extend Course	Ziad Elfeky
+LSP	Liskov Substitution	Derived courses work as Course Ahmed Khalifa
+Inh Inheritance and OOP concepts Ghofran Mohamed	
+ISP	Interface Segregation	Small specialized interfaces	Team
+DIP	Dependency Inversion	Payment depends on IEnrollment	Youssef Hegazy
+🔗 Entity Relationships
+Instructor (1) ────────► (N) Course
+
+Category   (1) ────────► (N) Course
+
+Course     (1) ────────► (N) Lesson
+
+Student    (1) ────────► (N) Enrollment ◄────── (N) Course
+
+Enrollment (1) ────────► (1) Payment
+
+Student    (1) ────────► (N) Review ◄────────── (N) Course
+
+Student    (N) ◄──────────────────────────────► (N) Course
+                     through Enrollment
+Relationship Details
+Relationship	Type	Description
+Instructor → Course	1 : N	One instructor can have multiple courses
+Category → Course	1 : N	One category can contain multiple courses
+Course → Lesson	1 : N	One course can contain multiple lessons
+Student → Enrollment	1 : N	One student can have multiple enrollments
+Course → Enrollment	1 : N	One course can have multiple enrollments
+Enrollment → Payment	1 : 1*	Business assumption that an enrollment has one payment
+Student → Review	1 : N	One student can write multiple reviews
+Course → Review	1 : N	One course can have multiple reviews
+
+Note: The Enrollment → Payment 1:1 relationship is a business assumption. The current object model does not enforce the relationship from both sides.
+
+🧩 Main Entities
+👨‍🎓 Student
+Student student1 =
+    new Student(
+        1,
+        "Ibrahim Elghazaly",
+        "ibrahim@gmail.com"
+    );
+👨‍🏫 Instructor
 Instructor instructor1 =
-    new Instructor(1, "Ahmed Hassan", "ahmed@academy.com");
-```
-
-An instructor can create **multiple courses**.
-
----
-
-### 🗂️ Category
-
-**Examples:** Programming, Web Development, Database, Software Engineering, Data Science.
-
-**Properties:** `CategoryID`, `CategoryName`
-
-```csharp
-Category category1 = new Category(1, "Programming");
-```
-
-A category can contain **many courses**.
-
----
-
-### 📚 Course
-
-**Properties:** `CourseID`, `CourseName`, `Description`, `Price`, `InstructorID`, `CategoryID`
-
-```csharp
+    new Instructor(
+        1,
+        "Ahmed Mohamed",
+        "ahmed@gmail.com",
+        "C# and .NET",
+        "C# and .NET Instructor"
+    );
+🗂️ Category
+Category category1 =
+    new Category(
+        1,
+        "Programming"
+    );
+📚 Course
 Course course1 =
     new Course(
         1,
         "C# Programming",
-        "Learn C# from Beginner to Advanced",
-        500,
-        1,
-        1
+        "Learn C# Programming",
+        150,
+        "40 Hours",
+        "Beginner",
+        "English",
+        instructor1,
+        category1
     );
-```
-
-A course belongs to **one instructor** and **one category**, and can contain **multiple lessons**.
-
----
-
-### 📖 Lesson
-
-**Properties:** `LessonID`, `LessonTitle`, `Content`, `CourseID`
-
-```csharp
+🆓 FreeCourse
+FreeCourse freeCourse =
+    new FreeCourse(
+        4,
+        "Intro to Git & GitHub",
+        "A free introductory course",
+        "5 Hours",
+        "Beginner",
+        "English",
+        instructor1,
+        category1
+    );
+🎓 CertificateCourse
+CertificateCourse certificateCourse =
+    new CertificateCourse(
+        5,
+        "Advanced ASP.NET Core",
+        "Deep dive with a certificate",
+        300,
+        "60 Hours",
+        "Advanced",
+        "English",
+        instructor2,
+        category2
+    );
+🏷️ DiscountCourse
+DiscountCourse discountCourse =
+    new DiscountCourse(
+        6,
+        "ASP.NET Core",
+        "Learn ASP.NET Core with discount",
+        200,
+        20,
+        "40 Hours",
+        "Intermediate",
+        "English",
+        instructor1,
+        category1
+    );
+📖 Lesson
 Lesson lesson1 =
     new Lesson(
         1,
         "Introduction to C#",
-        "C# is a modern programming language...",
+        "20 Minutes",
         1
     );
-```
 
----
+course1.AddLesson(lesson1);
 
-### 📝 Enrollment
+The AddLesson() operation is provided through:
 
-**Properties:** `EnrollmentID`, `StudentID`, `CourseID`, `EnrollmentDate`
-
-```csharp
+ILessonManagement
+📝 Enrollment
 Enrollment enrollment1 =
     new Enrollment(
         1,
-        1,
-        1,
-        DateTime.Now
+        student1,
+        course1,
+        DateTime.Now,
+        "Active",
+        150,
+        "Credit Card"
     );
-```
 
-> 💡 The Enrollment entity is important because it connects students with courses.
+Enrollment implements:
 
----
-
-### 💳 Payment
-
-**Properties:** `PaymentID`, `EnrollmentID`, `Amount`, `PaymentDate`, `PaymentMethod`
-
-```csharp
+IEnrollment
+💳 Payment
 Payment payment1 =
     new Payment(
         1,
-        1,
-        500,
+        enrollment1,
+        150,
+        "Credit Card",
         DateTime.Now,
-        "Visa"
+        "Completed"
     );
-```
 
----
+Payment depends on:
 
-### ⭐ Review
+IEnrollment
 
-**Properties:** `ReviewID`, `StudentID`, `CourseID`, `Rating`, `Comment`
+rather than directly depending on the concrete Enrollment type.
 
-```csharp
+⭐ Review
 Review review1 =
     new Review(
         1,
-        1,
-        1,
+        student1,
+        course1,
         5,
-        "Very useful course."
+        "Very good course",
+        DateTime.Now
     );
-```
+🖨️ ConsolePrinter
 
----
+ConsolePrinter is the main presentation component in the Console Application.
 
-## 🧩 Database / ERD Concept
+It implements several small display interfaces:
 
-```text
-Student
----------
-StudentID PK
-Name
-Email
-
-
-Instructor
----------
-InstructorID PK
-Name
-Email
-
-
-Category
----------
-CategoryID PK
-CategoryName
-
-
-Course
----------
-CourseID PK
-CourseName
-Description
-Price
-InstructorID FK
-CategoryID FK
-
-
-Lesson
----------
-LessonID PK
-LessonTitle
-Content
-CourseID FK
-
-
-Enrollment
----------
-EnrollmentID PK
-StudentID FK
-CourseID FK
-EnrollmentDate
-
-
-Payment
----------
-PaymentID PK
-EnrollmentID FK
-Amount
-PaymentDate
-PaymentMethod
-
-
-Review
----------
-ReviewID PK
-StudentID FK
-CourseID FK
-Rating
-Comment
-```
-
----
-
-## 🧠 OOP Concepts Used
-
-### 1️⃣ Classes
-
-```csharp
-public class Student
+public class ConsolePrinter :
+    ICourseDisplay,
+    IEnrollmentDisplay,
+    IPaymentDisplay,
+    IReviewDisplay
 {
-    public int StudentID { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-}
-```
-
-### 2️⃣ Objects
-
-```csharp
-Student student1 =
-    new Student(1, "Ahmed Mohamed", "ahmed@gmail.com");
-```
-
-### 3️⃣ Constructors
-
-```csharp
-public Student(int studentID, string name, string email)
-{
-    StudentID = studentID;
-    Name = name;
-    Email = email;
-}
-```
-
-### 4️⃣ Properties
-
-```csharp
-public int StudentID { get; set; }
-public string Name { get; set; }
-public string Email { get; set; }
-```
-
-### 5️⃣ Encapsulation
-
-```csharp
-public class Student
-{
-    public int StudentID { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-
-    public Student(int studentID, string name, string email)
+    public void ShowStudent(Student student)
     {
-        StudentID = studentID;
-        Name = name;
-        Email = email;
-    }
-}
-```
-
----
-
-## 💻 Example of Creating Objects
-
-```csharp
-// Students
-Student student1 = new Student(1, "Ahmed Mohamed", "ahmed@gmail.com");
-Student student2 = new Student(2, "Mohamed Ali", "mohamed@gmail.com");
-Student student3 = new Student(3, "Ali Mohamed", "ali@gmail.com");
-
-// Instructor
-Instructor instructor1 =
-    new Instructor(1, "Ahmed Hassan", "ahmed@academy.com");
-
-// Category
-Category category1 = new Category(1, "Programming");
-
-// Course
-Course course1 =
-    new Course(
-        1,
-        "C# Programming",
-        "Learn C# from Beginner to Advanced",
-        500,
-        1,
-        1
-    );
-```
-
----
-
-## 🚫 Version 1 - Without SOLID
-
-The first version of this project is **intentionally written without applying SOLID principles**.
-
-```text
-Course
-   ↓
-Payment
-   ↓
-Student
-   ↓
-Enrollment
-```
-
-### ⚠️ Problems Without SOLID
-
-| # | Problem | Description |
-|---|---------|-------------|
-| 1 | **Too Many Responsibilities** | A single class may handle data, validation, payment, email, and registration |
-| 2 | **Difficult to Add New Features** | Adding new payment methods requires modifying existing code |
-| 3 | **Tight Coupling** | Classes directly create and depend on other classes |
-| 4 | **Difficult Testing** | Strongly connected classes are hard to test independently |
-| 5 | **Large Interfaces** | Unrelated methods forced into a single interface |
-
----
-
-## 🧱 SOLID Version - Future Refactoring
-
-### 🔵 1. SRP - Single Responsibility Principle
-
-> *A class should have one main responsibility.*
-
-```text
-Student
-StudentValidator
-PaymentService
-EnrollmentService
-EmailService
-```
-
----
-
-### 🟢 2. OCP - Open/Closed Principle
-
-> *Software should be open for extension but closed for modification.*
-
-```csharp
-public interface IPaymentMethod
-{
-    void Pay(decimal amount);
-}
-
-public class VisaPayment : IPaymentMethod
-{
-    public void Pay(decimal amount)
-    {
-        Console.WriteLine("Payment using Visa");
-    }
-}
-
-public class PayPalPayment : IPaymentMethod
-{
-    public void Pay(decimal amount)
-    {
-        Console.WriteLine("Payment using PayPal");
-    }
-}
-```
-
----
-
-### 🟡 3. LSP - Liskov Substitution Principle
-
-> *Objects of a child class should be usable wherever the parent class is expected.*
-
-```csharp
-public class Payment
-{
-    public virtual void Pay() { }
-}
-```
-
----
-
-### 🟠 4. ISP - Interface Segregation Principle
-
-> *A class should not be forced to implement methods that it does not need.*
-
-```csharp
-public interface ILogin { void Login(); }
-public interface ICourseCreator { void CreateCourse(); }
-public interface IPayment { void Pay(); }
-```
-
----
-
-### 🔴 5. DIP - Dependency Inversion Principle
-
-> *High-level classes should depend on abstractions rather than concrete implementations.*
-
-```csharp
-public class PaymentService
-{
-    private IPaymentMethod paymentMethod;
-
-    public PaymentService(IPaymentMethod paymentMethod)
-    {
-        this.paymentMethod = paymentMethod;
+        // Display student information
     }
 
-    public void MakePayment(decimal amount)
+    public void ShowInstructor(Instructor instructor)
     {
-        paymentMethod.Pay(amount);
+        // Display instructor information
+    }
+
+    public void ShowCourse(Course course)
+    {
+        // Display course information
+    }
+
+    public void ShowEnrollment(Enrollment enrollment)
+    {
+        // Display enrollment information
+    }
+
+    public void ShowPayment(Payment payment)
+    {
+        // Display payment information
+    }
+
+    public void ShowReview(Review review)
+    {
+        // Display review information
     }
 }
-```
+Design Principles Demonstrated
+SRP: Presentation is separated from model classes.
+ISP: Display responsibilities are separated into focused interfaces.
+💰 Course Pricing Demonstration
 
----
+The project contains several pricing behaviors:
 
-## 📊 SOLID Summary
+Course Type	Base Price	Rule	Final Price
+Course	150	No change	150
+Course	120	No change	120
+Course	180	No change	180
+FreeCourse	0	Free	0
+CertificateCourse	300	+100 certificate fee	400
+DiscountCourse	200	20% discount	160
+Calculation
+150 + 120 + 180 + 0 + 400 + 160 = 1010
 
-| Principle | Meaning | Main Problem Solved |
-|-----------|---------|---------------------|
-| **SRP** | Single Responsibility | Too many responsibilities |
-| **OCP** | Open/Closed | Difficult feature extension |
-| **LSP** | Liskov Substitution | Incorrect inheritance behavior |
-| **ISP** | Interface Segregation | Large interfaces |
-| **DIP** | Dependency Inversion | Tight coupling |
+Therefore:
 
----
+Total Final Price of Courses: 1010
 
-## 🔄 Development Plan
+This value represents the sum of the final prices of the course objects. It should not be interpreted as actual business revenue from enrollments.
 
-### Stage 1 - Basic Version
-
-```text
-C#
- ↓
-Classes
- ↓
-Objects
- ↓
-Constructors
- ↓
-Properties
- ↓
-Relationships
- ↓
-Basic Application
-```
-
-### Stage 2 - SOLID Version
-
-```text
-Existing Project
-       ↓
-Analyze Problems
-       ↓
-Apply SRP
-       ↓
-Apply OCP
-       ↓
-Apply LSP
-       ↓
-Apply ISP
-       ↓
-Apply DIP
-       ↓
-Refactored Project
-```
-
----
-
-## ▶️ How to Run the Project
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/EbrahimElghazaly/E-_Learning_Platform.git
-```
-
-### 2. Open the Project
-
-Open the project using **Visual Studio** or **Visual Studio Code**.
-
-### 3. Build the Project
-
-```bash
+▶️ How to Run the Project
+1. Clone the Repository
+git clone https://github.com/EbrahimElghazaly/E_Learning_Platform.git
+2. Open the Project
+cd E_Learning_Platform
+3. Build the Project
 dotnet build
-```
-
-### 4. Run the Project
-
-```bash
+4. Run the Application
 dotnet run
-```
+📤 Expected Output
+========== STUDENTS ==========
 
----
+Student ID: 1
+Name: Ibrahim Elghazaly
+Email: ibrahim@gmail.com
 
-## 🛠️ Technologies Used
 
-- **C#**
-- **.NET**
-- **Object-Oriented Programming**
-- **Console Application**
-- **Git**
-- **GitHub**
+========== INSTRUCTORS ==========
 
----
+Instructor ID: 1
+Name: Ahmed Mohamed
+Email: ahmed@gmail.com
+Specialization: C# and .NET
+Bio: C# and .NET Instructor
 
-## 📚 Concepts Practiced
 
-```text
-C# Fundamentals
-        ↓
-Classes
-        ↓
-Objects
-        ↓
+========== COURSES ==========
+
+Course ID: 1
+Title: C# Programming
+Final Price: 150
+
+
+========== LSP DEMO ==========
+
+Final Price To Pay: 150
+Final Price To Pay: 120
+Final Price To Pay: 180
+Final Price To Pay: 0
+Final Price To Pay: 400
+Final Price To Pay: 160
+
+Total Final Price of Courses: 1010
+
+
+========== ENROLLMENTS ==========
+
+========== PAYMENTS ==========
+
+========== REVIEWS ==========
+🔄 Project Versions
+Version 1 — Basic Implementation
+
+The first version focuses on:
+
+C# fundamentals
+Classes and Objects
 Constructors
-        ↓
-Properties
-        ↓
-Encapsulation
-        ↓
-Object Relationships
-        ↓
 Collections
-        ↓
-OOP
-        ↓
-SOLID
-```
+Basic relationships
+Basic OOP
 
----
+It intentionally does not focus on SOLID.
 
-## 🌱 Future Improvements
+Version 2 — Refactoring & SOLID
 
-- 🔐 User Authentication (Login / Register, Password Hashing)
-- 🔍 Course Search & Filtering
-- 📊 Student Dashboard
-- 👨‍🏫 Instructor Dashboard
-- 🛠️ Admin Dashboard
-- 📈 Course Progress
-- 🎓 Certificates
-- 💳 Payment Integration (Multiple Payment Methods)
-- 🗄️ Database Integration (Entity Framework Core, SQL Server)
-- 🌐 ASP.NET Core Web API
-- 🔑 JWT Authentication
-- 🏛️ Repository Pattern
-- 💉 Dependency Injection
-- 🧪 Unit Testing
-- 🧼 Clean Architecture
+The second version refactors the project and introduces:
 
----
+SRP
+OCP
+LSP
+ISP
+DIP
+Interfaces
+Polymorphism
+Better separation of responsibilities
+More extensible course pricing
 
-## 🗄️ Future Database
+This is the current SOLID-focused implementation.
 
-The project can later be connected to **SQL Server**.
+🌱 Future Improvements
+🔐 Authentication
+Student registration
+Instructor registration
+Admin authentication
+JWT Authentication
+Role-based authorization
+🔍 Search & Filtering
+Search courses
+Filter by category
+Filter by level
+Filter by price
+Filter by instructor
+📊 Dashboards
+Student Dashboard
+Instructor Dashboard
+Admin Dashboard
+💳 Payments
 
-Possible database tables:
+A future version can introduce:
 
-```text
-Students
-Instructors
-Categories
-Courses
-Lessons
-Enrollments
-Payments
-Reviews
-```
+IPaymentMethod
 
----
+with implementations such as:
 
-## 🔌 Future ASP.NET Core API
+CreditCardPayment
+CashPayment
+PayPalPayment
+WalletPayment
 
-Possible API endpoints:
+This would provide another practical example of:
 
-```http
+Abstraction
+OCP
+DIP
+Polymorphism
+🗄️ Database
+
+Future database integration:
+
+SQL Server
+Entity Framework Core
+Database Migrations
+Relationships
+CRUD Operations
+🌐 Backend
+
+Future backend implementation:
+
+ASP.NET Core Web API
+RESTful APIs
+JWT Authentication
+Dependency Injection
+Repository Pattern
+Service Layer
+🧪 Testing
+Unit Testing
+xUnit
+Mocking
+Integration Testing
+🏛️ Architecture
+
+Future versions may adopt:
+
+Clean Architecture
+Separation of Concerns
+Service Layer
+Repository Layer
+🔌 Future API Endpoints
+
+A future ASP.NET Core Web API version could expose:
+
 GET     /api/students
 POST    /api/students
 
@@ -729,167 +837,121 @@ POST    /api/payments
 
 POST    /api/reviews
 GET     /api/courses/{id}/reviews
-```
 
----
+These endpoints are planned for a future ASP.NET Core Web API version and are not part of the current Console Application.
 
-## 🧪 Testing
+🎓 Learning Outcomes
 
-Testing can be added later using:
+After completing this project, the team practiced:
 
-- **xUnit**
-- **NUnit**
-- **MSTest**
-
-The SOLID version will make testing individual components easier.
-
----
-
-## 🔀 Git Workflow
-
-```bash
-# Initialize Repository
-git init
-
-# Add Files
-git add .
-
-# Create Commit
-git commit -m "Initial commit"
-
-# Rename Branch
-git branch -M main
-
-# Add GitHub Remote
-git remote add origin https://github.com/EbrahimElghazaly/E-_Learning_Platform.git
-
-# Push Project
-git push -u origin main
-```
-
----
-
-## 🚫 .gitignore
-
-```gitignore
-.vs/
-bin/
-obj/
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-```
-
----
-
-## 📌 Important Note
-
-This project is intentionally divided into **two versions**.
-
-### Version 1
-
-```text
-Basic C# Implementation
-+
-OOP
-+
-No SOLID
-```
-
-### Version 2
-
-```text
-Same Project
-+
-Refactoring
-+
-SOLID Principles
-```
-
-**S** → Single Responsibility Principle
-**O** → Open/Closed Principle
-**L** → Liskov Substitution Principle
-**I** → Interface Segregation Principle
-**D** → Dependency Inversion Principle
-
----
-
-## 🎓 Learning Outcome
-
-By completing this project, the developer will gain practical experience in:
-
-- ✅ Building a C# application from scratch.
-- ✅ Modeling real-world entities using classes.
-- ✅ Creating relationships between objects.
-- ✅ Understanding Object-Oriented Programming.
-- ✅ Identifying problems in tightly coupled code.
-- ✅ Understanding why software design principles are important.
-- ✅ Refactoring an existing project.
-- ✅ Applying SOLID principles to an existing application.
-- ✅ Preparing a project for future database and API integration.
-
----
-
-## 👨‍💻 Author
-
-**Ibrahim Mohamed Elghazaly**
-
-- 🎓 Computer Science Student
-- 💻 Full Stack .NET Developer
-
----
-
-## 📫 Project
-
-**E-Learning Platform**
-
-Built with:
-
-- C#
-- .NET
-- OOP
-- Git
-- GitHub
-
----
-
-## ⭐ Future Vision
-
-```text
-Console Application
+✅ Building a C# application from scratch
+✅ Creating classes and objects
+✅ Using constructors
+✅ Working with collections
+✅ Modeling real-world entities
+✅ Creating object relationships
+✅ Understanding inheritance
+✅ Understanding polymorphism
+✅ Using abstraction and interfaces
+✅ Applying SOLID principles
+✅ Refactoring existing code
+✅ Separating responsibilities
+✅ Designing extensible code
+✅ Preparing a project for future API and database integration
+🏛️ Architecture Roadmap
+C# Console Application
         ↓
-Clean C# Code
+       OOP
         ↓
-SOLID Principles
+   Clean Code
         ↓
-SQL Server
+      SOLID
+        ↓
+   SQL Server
         ↓
 Entity Framework Core
         ↓
 ASP.NET Core Web API
         ↓
+Dependency Injection
+        ↓
 Authentication & Authorization
         ↓
-Frontend Application
+     Frontend
         ↓
 Complete E-Learning Platform
-```
+📌 Important Design Notes
+SOLID
 
----
+The project demonstrates the five official SOLID principles:
 
-## ⭐ If You Like This Project
+S → Single Responsibility Principle
+O → Open/Closed Principle
+L → Liskov Substitution Principle
+I → Interface Segregation Principle
+D → Dependency Inversion Principle
+Inheritance
 
-Feel free to explore the source code, learn from it, and improve it.
+Inheritance is not a sixth SOLID principle.
 
-More features and improvements can be added as the project evolves.
+It is an Object-Oriented Programming concept used in this project to support:
 
----
+Code reuse
+Polymorphism
+Specialized course types
+Dependency Inversion vs Dependency Injection
 
-<div align="center">
+The current project demonstrates Dependency Inversion by making:
 
-### 🌟 Don't forget to Star the repository if you found it useful! 🌟
+Payment
 
-Made with ❤️ by **Ibrahim Mohamed Elghazaly**
+depend on:
 
-</div>
+IEnrollment
+
+instead of:
+
+Enrollment
+
+A future version can implement full Dependency Injection using:
+
+Constructor Injection
+.NET DI Container
+Service Registration
+👨‍💻 Team
+Name	Contribution
+Ibrahim Mohamed Elghazaly	Project idea, base implementation, integration
+Mohamed Saeed	SRP
+Ziad Elfeky	OCP
+Ahmed Khalifa	LSP
+Ghofran Mohamed	OOP / Inheritance
+Youssef Hegazy	DIP
+Team	ISP and final integration
+⭐ Project Vision
+
+The goal is to transform the current educational Console Application into a complete and scalable E-Learning Platform.
+
+Console App
+     ↓
+OOP
+     ↓
+SOLID
+     ↓
+Clean Code
+     ↓
+Database
+     ↓
+ASP.NET Core API
+     ↓
+Authentication
+     ↓
+Frontend
+     ↓
+Complete E-Learning Platform
+❤️ Final Message
+
+This project represents a practical learning journey from basic C# programming and OOP to SOLID principles, refactoring, abstraction, polymorphism, and clean code.
+
+It provides a foundation that can later evolve into a complete ASP.NET Core + SQL Server E-Learning Platform.
+
+Made with ❤️ by Ibrahim Mohamed Elghazaly & Team
