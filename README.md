@@ -1,490 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎓 E-Learning Platform - C# / .NET</title>
-<style>
-  :root{
-    --bg:#0d1117;
-    --bg-2:#161b22;
-    --bg-3:#1c2128;
-    --border:#30363d;
-    --text:#e6edf3;
-    --text-dim:#8b949e;
-    --accent:#58a6ff;
-    --accent-2:#79c0ff;
-    --green:#3fb950;
-    --yellow:#d29922;
-    --red:#f85149;
-    --purple:#bc8cff;
-    --orange:#ffa657;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.7;
-    font-size:16px;
-  }
-  .container{max-width:980px;margin:0 auto;padding:40px 24px 80px;}
+# 🎓 E-Learning Platform
 
-  /* Hero */
-  .hero{
-    text-align:center;
-    padding:48px 24px;
-    background:linear-gradient(135deg,#1f6feb22,#bc8cff22);
-    border:1px solid var(--border);
-    border-radius:16px;
-    margin-bottom:40px;
-  }
-  .hero h1{
-    font-size:2.4rem;
-    background:linear-gradient(135deg,#58a6ff,#bc8cff,#3fb950);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    margin-bottom:12px;
-  }
-  .hero p{color:var(--text-dim);font-size:1.05rem;max-width:700px;margin:0 auto;}
-  .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
-  .badge{
-    background:var(--bg-3);
-    border:1px solid var(--border);
-    padding:4px 12px;
-    border-radius:20px;
-    font-size:.82rem;
-    color:var(--accent-2);
-    font-weight:500;
-  }
+A C# / .NET Console-based E-Learning Platform designed to demonstrate Object-Oriented Programming (OOP) concepts and the practical application of the five SOLID principles through clean code and refactoring.
 
-  /* Headings */
-  h2{
-    font-size:1.6rem;
-    margin:48px 0 20px;
-    padding-bottom:10px;
-    border-bottom:1px solid var(--border);
-    color:var(--text);
-  }
-  h3{
-    font-size:1.2rem;
-    margin:28px 0 14px;
-    color:var(--accent-2);
-  }
-  h4{
-    font-size:1rem;
-    margin:20px 0 10px;
-    color:var(--text);
-  }
-  p{margin-bottom:14px;color:var(--text);}
-  a{color:var(--accent);text-decoration:none;}
-  a:hover{text-decoration:underline;}
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![OOP](https://img.shields.io/badge/OOP-58a6ff?style=for-the-badge)
+![SOLID](https://img.shields.io/badge/SOLID-bc8cff?style=for-the-badge)
+![Console App](https://img.shields.io/badge/Console-App-3fb950?style=for-the-badge)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
-  /* Lists */
-  ul,ol{margin:12px 0 18px 24px;}
-  li{margin-bottom:8px;}
+---
 
-  /* Code */
-  code{
-    background:var(--bg-3);
-    padding:2px 7px;
-    border-radius:6px;
-    font-family:"SF Mono",Consolas,"Liberation Mono",Menlo,monospace;
-    font-size:.88em;
-    color:var(--accent-2);
-    border:1px solid var(--border);
-  }
-  pre{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:18px;
-    overflow-x:auto;
-    margin:14px 0 20px;
-    position:relative;
-  }
-  pre code{
-    background:none;
-    border:none;
-    padding:0;
-    color:var(--text);
-    font-size:.86rem;
-    line-height:1.6;
-  }
-  /* simple syntax colors */
-  .kw{color:#ff7b72;}
-  .ty{color:#ffa657;}
-  .st{color:#a5d6ff;}
-  .cm{color:#8b949e;font-style:italic;}
-  .fn{color:#d2a8ff;}
-  .nm{color:#79c0ff;}
+## 📑 Table of Contents
 
-  /* Tables */
-  table{
-    width:100%;
-    border-collapse:collapse;
-    margin:18px 0;
-    background:var(--bg-2);
-    border-radius:10px;
-    overflow:hidden;
-    border:1px solid var(--border);
-    font-size:.92rem;
-  }
-  th{
-    background:var(--bg-3);
-    padding:12px 14px;
-    text-align:left;
-    font-weight:600;
-    color:var(--accent-2);
-    border-bottom:1px solid var(--border);
-    font-size:.88rem;
-    text-transform:uppercase;
-    letter-spacing:.4px;
-  }
-  td{
-    padding:11px 14px;
-    border-bottom:1px solid var(--border);
-    vertical-align:top;
-  }
-  tr:last-child td{border-bottom:none;}
-  tr:hover td{background:#1c212877;}
+1. [Project Overview](#-project-overview)
+2. [Team Members](#-team-members)
+3. [Project Goals](#-project-goals)
+4. [Technologies Used](#️-technologies-used)
+5. [Project Structure](#-project-structure)
+6. [OOP Concepts](#-oop-concepts)
+7. [SOLID Principles](#-solid-principles)
+8. [SOLID Summary](#-solid-summary)
+9. [Entity Relationships](#-entity-relationships)
+10. [Main Entities](#-main-entities)
+11. [ConsolePrinter](#️-consoleprinter)
+12. [Course Pricing Demonstration](#-course-pricing-demonstration)
+13. [How to Run the Project](#️-how-to-run-the-project)
+14. [Expected Output](#-expected-output)
+15. [Project Versions](#-project-versions)
+16. [Future Improvements](#-future-improvements)
+17. [Future API Endpoints](#-future-api-endpoints)
+18. [Learning Outcomes](#-learning-outcomes)
+19. [Architecture Roadmap](#️-architecture-roadmap)
+20. [Important Design Notes](#-important-design-notes)
+21. [Team](#-team)
+22. [Project Vision](#-project-vision)
+23. [Final Message](#️-final-message)
 
-  /* Callouts */
-  .note{
-    background:#1f6feb1a;
-    border-left:4px solid var(--accent);
-    padding:14px 18px;
-    border-radius:0 8px 8px 0;
-    margin:18px 0;
-  }
-  .warn{
-    background:#d299221a;
-    border-left:4px solid var(--yellow);
-    padding:14px 18px;
-    border-radius:0 8px 8px 0;
-    margin:18px 0;
-  }
-  .success{
-    background:#3fb9501a;
-    border-left:4px solid var(--green);
-    padding:14px 18px;
-    border-radius:0 8px 8px 0;
-    margin:18px 0;
-  }
-  .note strong,.warn strong,.success strong{color:var(--text);}
+---
 
-  /* SOLID cards */
-  .solid-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:16px;
-    margin:20px 0;
-  }
-  .solid-card{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px;
-    position:relative;
-    overflow:hidden;
-  }
-  .solid-card::before{
-    content:"";
-    position:absolute;
-    top:0;left:0;right:0;height:4px;
-  }
-  .solid-card.srp::before{background:#58a6ff;}
-  .solid-card.ocp::before{background:#3fb950;}
-  .solid-card.lsp::before{background:#d29922;}
-  .solid-card.isp::before{background:#bc8cff;}
-  .solid-card.dip::before{background:#f85149;}
-  .solid-card h4{margin-top:0;font-size:1.05rem;}
-  .solid-card .letter{font-size:1.8rem;font-weight:800;opacity:.25;position:absolute;top:12px;right:16px;}
-  .solid-card .owner{font-size:.82rem;color:var(--text-dim);margin-top:8px;}
+## 📌 Project Overview
 
-  /* Diagram */
-  .diagram{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:24px;
-    font-family:"SF Mono",Consolas,monospace;
-    font-size:.88rem;
-    line-height:1.9;
-    color:var(--accent-2);
-    overflow-x:auto;
-    white-space:pre;
-  }
+This project is an educational **E-Learning Platform** built using **C#** and **.NET** as a **Console Application**.
 
-  /* Team grid */
-  .team-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:14px;
-    margin:20px 0;
-  }
-  .team-card{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:16px;
-    text-align:center;
-  }
-  .team-card .role{font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.5px;}
-  .team-card .name{font-weight:600;color:var(--text);margin-top:6px;}
+The project demonstrates:
 
-  /* Footer */
-  footer{
-    margin-top:60px;
-    padding-top:30px;
-    border-top:1px solid var(--border);
-    text-align:center;
-    color:var(--text-dim);
-    font-size:.9rem;
-  }
-  footer .heart{color:var(--red);}
+- Object-Oriented Programming (OOP)
+- Encapsulation
+- Inheritance
+- Polymorphism
+- Abstraction
+- SOLID Principles
+- Refactoring
+- Clean Code Concepts
+- Relationships between real-world entities
 
-  /* TOC */
-  .toc{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px 24px;
-    margin-bottom:30px;
-  }
-  .toc h3{margin-top:0;color:var(--text);font-size:1.05rem;}
-  .toc ol{margin:0 0 0 20px;columns:2;column-gap:30px;}
-  .toc li{margin-bottom:6px;font-size:.92rem;}
-  @media(max-width:640px){
-    .toc ol{columns:1;}
-    .hero h1{font-size:1.7rem;}
-    .container{padding:24px 16px 60px;}
-  }
+The project was developed in two main stages:
 
-  /* Back to top */
-  .top{
-    position:fixed;
-    bottom:24px;right:24px;
-    background:var(--accent);
-    color:#fff;
-    width:44px;height:44px;
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    text-decoration:none;
-    font-size:1.2rem;
-    box-shadow:0 4px 14px #58a6ff55;
-    opacity:.85;
-    transition:.2s;
-  }
-  .top:hover{opacity:1;transform:translateY(-3px);text-decoration:none;}
-</style>
-</head>
-<body>
-<div class="container">
+- **Version 1:** Basic C# and OOP implementation without SOLID
+- **Version 2:** Refactored version with practical application of the five SOLID principles
 
-  <!-- HERO -->
-  <div class="hero">
-    <h1>🎓 E-Learning Platform</h1>
-    <p>A C# / .NET Console-based E-Learning Platform designed to demonstrate Object-Oriented Programming (OOP) concepts and the practical application of the five SOLID principles through clean code and refactoring.</p>
-    <div class="badges">
-      <span class="badge">C#</span>
-      <span class="badge">.NET</span>
-      <span class="badge">OOP</span>
-      <span class="badge">SOLID</span>
-      <span class="badge">Console App</span>
-      <span class="badge">Git</span>
-      <span class="badge">GitHub</span>
-    </div>
-  </div>
+The second version focuses on improving maintainability, extensibility, and separation of responsibilities.
 
-  <!-- TOC -->
-  <nav class="toc">
-    <h3>📑 Table of Contents</h3>
-    <ol>
-      <li><a href="#overview">Project Overview</a></li>
-      <li><a href="#team">Team Members</a></li>
-      <li><a href="#goals">Project Goals</a></li>
-      <li><a href="#tech">Technologies Used</a></li>
-      <li><a href="#structure">Project Structure</a></li>
-      <li><a href="#oop">OOP Concepts</a></li>
-      <li><a href="#solid">SOLID Principles</a></li>
-      <li><a href="#summary">SOLID Summary</a></li>
-      <li><a href="#relationships">Entity Relationships</a></li>
-      <li><a href="#entities">Main Entities</a></li>
-      <li><a href="#printer">ConsolePrinter</a></li>
-      <li><a href="#pricing">Course Pricing</a></li>
-      <li><a href="#run">How to Run</a></li>
-      <li><a href="#output">Expected Output</a></li>
-      <li><a href="#versions">Project Versions</a></li>
-      <li><a href="#future">Future Improvements</a></li>
-      <li><a href="#api">Future API Endpoints</a></li>
-      <li><a href="#outcomes">Learning Outcomes</a></li>
-      <li><a href="#roadmap">Architecture Roadmap</a></li>
-      <li><a href="#notes">Important Design Notes</a></li>
-    </ol>
-  </nav>
+---
 
-  <!-- OVERVIEW -->
-  <section id="overview">
-    <h2>📌 Project Overview</h2>
-    <p>This project is an educational E-Learning Platform built using <strong>C#</strong> and <strong>.NET</strong> as a <strong>Console Application</strong>.</p>
-    <p>The project demonstrates:</p>
-    <ul>
-      <li>Object-Oriented Programming (OOP)</li>
-      <li>Encapsulation</li>
-      <li>Inheritance</li>
-      <li>Polymorphism</li>
-      <li>Abstraction</li>
-      <li>SOLID Principles</li>
-      <li>Refactoring</li>
-      <li>Clean Code Concepts</li>
-      <li>Relationships between real-world entities</li>
-    </ul>
-    <p>The project was developed in two main stages:</p>
-    <ul>
-      <li><strong>Version 1:</strong> Basic C# and OOP implementation without SOLID</li>
-      <li><strong>Version 2:</strong> Refactored version with practical application of the five SOLID principles</li>
-    </ul>
-    <p>The second version focuses on improving maintainability, extensibility, and separation of responsibilities.</p>
-  </section>
+## 👨‍💻 Team Members
 
-  <!-- TEAM -->
-  <section id="team">
-    <h2>👨‍💻 Team Members</h2>
-    <table>
-      <thead>
-        <tr><th>Role</th><th>Name</th><th>Responsibility</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>🏗️ Project Owner &amp; Base Code</td><td>Ibrahim Mohamed Elghazaly</td><td>Project idea and initial implementation</td></tr>
-        <tr><td>🔵 SRP</td><td>Mohamed Saeed</td><td>Single Responsibility Principle</td></tr>
-        <tr><td>🟢 OCP</td><td>Ziad Elfeky</td><td>Open/Closed Principle</td></tr>
-        <tr><td>🟡 LSP</td><td>Ahmed Khalifa</td><td>Liskov Substitution Principle</td></tr>
-        <tr><td>🟠 OOP / Inheritance</td><td>Ghofran Mohamed</td><td>Inheritance and OOP concepts</td></tr>
-        <tr><td>🔴 DIP</td><td>Youssef Hegazy</td><td>Dependency Inversion Principle</td></tr>
-        <tr><td>🟣 ISP</td><td>Team</td><td>Interface Segregation Principle</td></tr>
-      </tbody>
-    </table>
-  </section>
+| Role | Name | Responsibility |
+|------|------|----------------|
+| 🏗️ Project Owner & Base Code | **Ibrahim Mohamed Elghazaly** | Project idea and initial implementation |
+| 🔵 SRP | Mohamed Saeed | Single Responsibility Principle |
+| 🟢 OCP | Ziad Elfeky | Open/Closed Principle |
+| 🟡 LSP | Ahmed Khalifa | Liskov Substitution Principle |
+| 🟠 OOP / Inheritance | Ghofran Mohamed | Inheritance and OOP concepts |
+| 🔴 DIP | Youssef Hegazy | Dependency Inversion Principle |
+| 🟣 ISP | Team | Interface Segregation Principle |
 
-  <!-- GOALS -->
-  <section id="goals">
-    <h2>🎯 Project Goals</h2>
-    <ul>
-      <li>✅ Practice C# and .NET</li>
-      <li>✅ Understand OOP concepts</li>
-      <li>✅ Model real-world entities</li>
-      <li>✅ Understand relationships between objects</li>
-      <li>✅ Apply the five SOLID principles</li>
-      <li>✅ Refactor an existing codebase</li>
-      <li>✅ Improve code maintainability</li>
-      <li>✅ Prepare the project for future API and database integration</li>
-    </ul>
-  </section>
+---
 
-  <!-- TECH -->
-  <section id="tech">
-    <h2>🛠️ Technologies Used</h2>
-    <div class="badges" style="justify-content:flex-start;">
-      <span class="badge">C#</span>
-      <span class="badge">.NET</span>
-      <span class="badge">OOP</span>
-      <span class="badge">SOLID Principles</span>
-      <span class="badge">Console Application</span>
-      <span class="badge">Git</span>
-      <span class="badge">GitHub</span>
-    </div>
-  </section>
+## 🎯 Project Goals
 
-  <!-- STRUCTURE -->
-  <section id="structure">
-    <h2>🧱 Project Structure</h2>
-    <div class="diagram">E-Learning-Platform
+The main goals of this project are:
+
+- ✅ Practice C# and .NET
+- ✅ Understand OOP concepts
+- ✅ Model real-world entities
+- ✅ Understand relationships between objects
+- ✅ Apply the five SOLID principles
+- ✅ Refactor an existing codebase
+- ✅ Improve code maintainability
+- ✅ Prepare the project for future API and database integration
+
+---
+
+## 🛠️ Technologies Used
+
+- **C#**
+- **.NET**
+- **Object-Oriented Programming (OOP)**
+- **SOLID Principles**
+- **Console Application**
+- **Git**
+- **GitHub**
+
+---
+
+## 🧱 Project Structure
+E-Learning-Platform
 │
 ├── E-Learning-Platform.sln
 │
 ├── Models
-│   ├── Instructor.cs
-│   ├── Student.cs
-│   ├── Category.cs
-│   ├── Course.cs
-│   ├── FreeCourse.cs
-│   ├── CertificateCourse.cs
-│   ├── DiscountCourse.cs
-│   ├── Lesson.cs
-│   ├── Enrollment.cs
-│   ├── Payment.cs
-│   └── Review.cs
+│ ├── Instructor.cs
+│ ├── Student.cs
+│ ├── Category.cs
+│ ├── Course.cs
+│ ├── FreeCourse.cs
+│ ├── CertificateCourse.cs
+│ ├── DiscountCourse.cs
+│ ├── Lesson.cs
+│ ├── Enrollment.cs
+│ ├── Payment.cs
+│ └── Review.cs
 │
 ├── Interfaces
-│   ├── ICourseDisplay.cs
-│   ├── ILessonManagement.cs
-│   ├── IEnrollmentDisplay.cs
-│   ├── IPaymentDisplay.cs
-│   ├── IReviewDisplay.cs
-│   └── IEnrollment.cs
+│ ├── ICourseDisplay.cs
+│ ├── ILessonManagement.cs
+│ ├── IEnrollmentDisplay.cs
+│ ├── IPaymentDisplay.cs
+│ ├── IReviewDisplay.cs
+│ └── IEnrollment.cs
 │
 ├── Services
-│   └── ConsolePrinter.cs
+│ └── ConsolePrinter.cs
 │
 ├── Program.cs
 │
-└── README.md</div>
-  </section>
+└── README.md
 
-  <!-- OOP -->
-  <section id="oop">
-    <h2>🧠 OOP Concepts</h2>
-    <p>The project uses the main Object-Oriented Programming concepts.</p>
+text
 
-    <h3>1. Encapsulation</h3>
-    <p>Each entity stores its related data and behavior inside a class.</p>
-    <p><strong>Examples:</strong> <code>Student</code>, <code>Instructor</code>, <code>Course</code>, <code>Lesson</code>, <code>Enrollment</code>, <code>Payment</code>, <code>Review</code>.</p>
+---
 
-    <h3>2. Inheritance</h3>
-    <div class="warn">
-      <strong>Note:</strong> Inheritance is an OOP concept, <strong>not one of the five SOLID principles</strong>.
-    </div>
-    <p>The project uses inheritance to create specialized course types from the base <code>Course</code> class.</p>
-<pre><code><span class="kw">public class</span> <span class="ty">Course</span>
+## 🧠 OOP Concepts
+
+The project uses the main Object-Oriented Programming concepts.
+
+### 1. Encapsulation
+
+Each entity stores its related data and behavior inside a class.
+
+**Examples:** `Student`, `Instructor`, `Course`, `Lesson`, `Enrollment`, `Payment`, `Review`.
+
+### 2. Inheritance
+
+> **Note:** Inheritance is an OOP concept, **not one of the five SOLID principles**.
+
+The project uses inheritance to create specialized course types from the base `Course` class.
+
+```csharp
+public class Course
 {
-    <span class="kw">public virtual double</span> <span class="fn">GetFinalPrice</span>()
+    public virtual double GetFinalPrice()
     {
-        <span class="kw">return</span> Price;
+        return Price;
     }
 }
 
-<span class="kw">public class</span> <span class="ty">FreeCourse</span> : <span class="ty">Course</span>
+public class FreeCourse : Course
 {
-    <span class="kw">public override double</span> <span class="fn">GetFinalPrice</span>()
+    public override double GetFinalPrice()
     {
-        <span class="kw">return</span> <span class="nm">0</span>;
+        return 0;
     }
 }
 
-<span class="kw">public class</span> <span class="ty">CertificateCourse</span> : <span class="ty">Course</span>
+public class CertificateCourse : Course
 {
-    <span class="kw">public override double</span> <span class="fn">GetFinalPrice</span>()
+    public override double GetFinalPrice()
     {
-        <span class="kw">return</span> Price + CertificateFee;
+        return Price + CertificateFee;
     }
 }
 
-<span class="kw">public class</span> <span class="ty">DiscountCourse</span> : <span class="ty">Course</span>
+public class DiscountCourse : Course
 {
-    <span class="kw">public override double</span> <span class="fn">GetFinalPrice</span>()
+    public override double GetFinalPrice()
     {
-        <span class="kw">return</span> Price - (Price * DiscountPercentage / <span class="nm">100</span>);
+        return Price - (Price * DiscountPercentage / 100);
     }
-}</code></pre>
-    <p>This allows specialized classes to reuse common properties and behavior from <code>Course</code>.</p>
+}
+This allows specialized classes to reuse common properties and behavior from Course.
 
-    <h3>3. Polymorphism</h3>
-    <p>Polymorphism is demonstrated by storing different course types in a collection of the base type:</p>
-<pre><code><span class="ty">List</span>&lt;<span class="ty">Course</span>&gt; allCourses =
-    <span class="kw">new</span> <span class="ty">List</span>&lt;<span class="ty">Course</span>&gt;
+3. Polymorphism
+Polymorphism is demonstrated by storing different course types in a collection of the base type:
+
+csharp
+List<Course> allCourses =
+    new List<Course>
     {
         course1,
         course2,
@@ -492,96 +206,119 @@
         freeCourse,
         certificateCourse,
         discountCourse
-    };</code></pre>
-    <p>Then:</p>
-<pre><code><span class="kw">foreach</span> (<span class="ty">Course</span> course <span class="kw">in</span> allCourses)
-{
-    Console.<span class="fn">WriteLine</span>(course.<span class="fn">GetFinalPrice</span>());
-}</code></pre>
-    <p>The same method <code>GetFinalPrice()</code> can produce different results depending on the actual object type.</p>
+    };
+Then:
 
-    <h3>4. Abstraction</h3>
-    <p>The project uses interfaces to define contracts without exposing implementation details.</p>
-<pre><code><span class="kw">public interface</span> <span class="ty">IEnrollment</span>
+csharp
+foreach (Course course in allCourses)
 {
-    <span class="kw">string</span> StudentName { <span class="kw">get</span>; }
-    <span class="kw">string</span> CourseTitle { <span class="kw">get</span>; }
-}</code></pre>
-    <p>The <code>Payment</code> class can work with the abstraction instead of directly depending on the concrete <code>Enrollment</code> class.</p>
-  </section>
+    Console.WriteLine(course.GetFinalPrice());
+}
+The same method GetFinalPrice() can produce different results depending on the actual object type.
 
-  <!-- SOLID -->
-  <section id="solid">
-    <h2>🧩 SOLID Principles</h2>
-    <p>The project demonstrates all five SOLID principles:</p>
-    <div class="solid-grid">
-      <div class="solid-card srp"><span class="letter">S</span><h4>Single Responsibility</h4><p>One reason to change.</p></div>
-      <div class="solid-card ocp"><span class="letter">O</span><h4>Open / Closed</h4><p>Open for extension, closed for modification.</p></div>
-      <div class="solid-card lsp"><span class="letter">L</span><h4>Liskov Substitution</h4><p>Derived types must be substitutable.</p></div>
-      <div class="solid-card isp"><span class="letter">I</span><h4>Interface Segregation</h4><p>No forced dependencies on unused methods.</p></div>
-      <div class="solid-card dip"><span class="letter">D</span><h4>Dependency Inversion</h4><p>Depend on abstractions, not concretions.</p></div>
-    </div>
+4. Abstraction
+The project uses interfaces to define contracts without exposing implementation details.
 
-    <!-- SRP -->
-    <h3>🔵 1. SRP — Single Responsibility Principle</h3>
-    <p><strong>Responsible:</strong> Mohamed Saeed</p>
-    <p><strong>Definition:</strong> A class should have one reason to change.</p>
-    <p>The project separates the responsibility of displaying information from the entity classes.</p>
-<pre><code><span class="kw">public class</span> <span class="ty">ConsolePrinter</span>
+csharp
+public interface IEnrollment
 {
-    <span class="kw">public void</span> <span class="fn">ShowStudent</span>(<span class="ty">Student</span> student)
+    string StudentName { get; }
+    string CourseTitle { get; }
+}
+The Payment class can work with the abstraction instead of directly depending on the concrete Enrollment class.
+
+🧩 SOLID Principles
+The project demonstrates all five SOLID principles:
+
+S → Single Responsibility Principle
+
+O → Open/Closed Principle
+
+L → Liskov Substitution Principle
+
+I → Interface Segregation Principle
+
+D → Dependency Inversion Principle
+
+🔵 1. SRP — Single Responsibility Principle
+Responsible: Mohamed Saeed
+
+Definition: A class should have one reason to change.
+
+The project separates the responsibility of displaying information from the entity classes.
+
+csharp
+public class ConsolePrinter
+{
+    public void ShowStudent(Student student)
     {
-        Console.<span class="fn">WriteLine</span>(<span class="st">"Student ID: "</span> + student.StudentID);
-        Console.<span class="fn">WriteLine</span>(<span class="st">"Name: "</span> + student.Name);
-        Console.<span class="fn">WriteLine</span>(<span class="st">"Email: "</span> + student.Email);
+        Console.WriteLine("Student ID: " + student.StudentID);
+        Console.WriteLine("Name: " + student.Name);
+        Console.WriteLine("Email: " + student.Email);
     }
 
-    <span class="kw">public void</span> <span class="fn">ShowCourse</span>(<span class="ty">Course</span> course)
+    public void ShowCourse(Course course)
     {
-        <span class="cm">// Display course information</span>
+        // Display course information
     }
-}</code></pre>
-    <p><code>ConsolePrinter</code> has one main responsibility: <strong>Displaying system data in the Console.</strong></p>
-    <p>The models represent the application's data, while <code>ConsolePrinter</code> handles presentation.</p>
-    <div class="success">
-      <strong>Benefits:</strong> Easier maintenance, easier modification, better separation of responsibilities, easier future testing.
-    </div>
+}
+ConsolePrinter has one main responsibility: Displaying system data in the Console.
 
-    <!-- OCP -->
-    <h3>🟢 2. OCP — Open/Closed Principle</h3>
-    <p><strong>Responsible:</strong> Ziad Elfeky</p>
-    <p><strong>Definition:</strong> Software entities should be open for extension but closed for modification.</p>
-    <p>The base <code>Course</code> class defines common pricing behavior:</p>
-<pre><code><span class="kw">public virtual double</span> <span class="fn">GetFinalPrice</span>()
-{
-    <span class="kw">return</span> Price;
-}</code></pre>
-    <p>New course types can extend this behavior without modifying the original <code>Course</code> implementation.</p>
-<pre><code><span class="kw">public class</span> <span class="ty">DiscountCourse</span> : <span class="ty">Course</span>
-{
-    <span class="kw">public double</span> DiscountPercentage;
+The models represent the application's data, while ConsolePrinter handles presentation.
 
-    <span class="kw">public override double</span> <span class="fn">GetFinalPrice</span>()
+Benefits:
+
+Easier maintenance
+
+Easier modification
+
+Better separation of responsibilities
+
+Easier future testing
+
+🟢 2. OCP — Open/Closed Principle
+Responsible: Ziad Elfeky
+
+Definition: Software entities should be open for extension but closed for modification.
+
+The base Course class defines common pricing behavior:
+
+csharp
+public virtual double GetFinalPrice()
+{
+    return Price;
+}
+New course types can extend this behavior without modifying the original Course implementation.
+
+csharp
+public class DiscountCourse : Course
+{
+    public double DiscountPercentage;
+
+    public override double GetFinalPrice()
     {
-        <span class="kw">return</span> Price - (Price * DiscountPercentage / <span class="nm">100</span>);
+        return Price - (Price * DiscountPercentage / 100);
     }
-}</code></pre>
-    <p>Other course types include:</p>
-    <div class="diagram">Course
+}
+Other course types include:
+
+text
+Course
 ├── FreeCourse
 ├── CertificateCourse
-└── DiscountCourse</div>
-    <div class="success">
-      <strong>Benefit:</strong> If a new course type is required in the future (e.g., <code>PremiumCourse</code>, <code>BundleCourse</code>, <code>SeasonalDiscountCourse</code>), it can be implemented as a new class without changing the existing <code>Course</code> pricing logic.
-    </div>
+└── DiscountCourse
+Benefit: If a new course type is required in the future (e.g., PremiumCourse, BundleCourse, SeasonalDiscountCourse), it can be implemented as a new class without changing the existing Course pricing logic.
 
-    <!-- LSP -->
-    <h3>🟡 3. LSP — Liskov Substitution Principle</h3>
-    <p><strong>Responsible:</strong> Ahmed Khalifa</p>
-    <p><strong>Definition:</strong> Objects of a derived class should be usable wherever objects of the base class are expected without breaking the application.</p>
-    <p>The project demonstrates this using:</p>
-<pre><code><span class="ty">List</span>&lt;<span class="ty">Course</span>&gt; allCourses =
-    <span class="kw">new</span> <span class="ty">List</span>&lt;<span class="ty">Course</span>&gt;
+🟡 3. LSP — Liskov Substitution Principle
+Responsible: Ahmed Khalifa
+
+Definition: Objects of a derived class should be usable wherever objects of the base class are expected without breaking the application.
+
+The project demonstrates this using:
+
+csharp
+List<Course> allCourses =
+    new List<Course>
     {
         course1,
         course2,
@@ -589,96 +326,110 @@
         freeCourse,
         certificateCourse,
         discountCourse
-    };</code></pre>
-    <p>All derived classes can be treated as <code>Course</code>.</p>
-<pre><code><span class="kw">foreach</span> (<span class="ty">Course</span> course <span class="kw">in</span> allCourses)
-{
-    Console.<span class="fn">WriteLine</span>(course.<span class="fn">GetFinalPrice</span>());
-}</code></pre>
-    <p>Each derived class provides its own implementation of <code>GetFinalPrice()</code>. Therefore, the base class reference can work with all supported course types.</p>
+    };
+All derived classes can be treated as Course.
 
-    <!-- ISP -->
-    <h3>🟣 4. ISP — Interface Segregation Principle</h3>
-    <p><strong>Definition:</strong> A class should not be forced to depend on methods it does not use.</p>
-    <p>Instead of creating one large interface:</p>
-<pre><code><span class="cm">// ❌ Large interface</span>
-<span class="kw">public interface</span> <span class="ty">IPrinter</span>
+csharp
+foreach (Course course in allCourses)
 {
-    <span class="kw">void</span> <span class="fn">ShowCourse</span>(<span class="ty">Course</span> course);
-    <span class="kw">void</span> <span class="fn">ShowStudent</span>(<span class="ty">Student</span> student);
-    <span class="kw">void</span> <span class="fn">ShowEnrollment</span>(<span class="ty">Enrollment</span> enrollment);
-    <span class="kw">void</span> <span class="fn">ShowPayment</span>(<span class="ty">Payment</span> payment);
-    <span class="kw">void</span> <span class="fn">ShowReview</span>(<span class="ty">Review</span> review);
-}</code></pre>
-    <p>The project separates responsibilities into smaller interfaces:</p>
-<pre><code><span class="kw">public interface</span> <span class="ty">ICourseDisplay</span>
-{
-    <span class="kw">void</span> <span class="fn">ShowCourse</span>(<span class="ty">Course</span> course);
+    Console.WriteLine(course.GetFinalPrice());
 }
-<span class="kw">public interface</span> <span class="ty">ILessonManagement</span>
+Each derived class provides its own implementation of GetFinalPrice(). Therefore, the base class reference can work with all supported course types.
+
+🟣 4. ISP — Interface Segregation Principle
+Definition: A class should not be forced to depend on methods it does not use.
+
+Instead of creating one large interface:
+
+csharp
+// ❌ Large interface
+public interface IPrinter
 {
-    <span class="kw">void</span> <span class="fn">AddLesson</span>(<span class="ty">Lesson</span> lesson);
+    void ShowCourse(Course course);
+    void ShowStudent(Student student);
+    void ShowEnrollment(Enrollment enrollment);
+    void ShowPayment(Payment payment);
+    void ShowReview(Review review);
 }
-<span class="kw">public interface</span> <span class="ty">IEnrollmentDisplay</span>
+The project separates responsibilities into smaller interfaces:
+
+csharp
+public interface ICourseDisplay
 {
-    <span class="kw">void</span> <span class="fn">ShowEnrollment</span>(<span class="ty">Enrollment</span> enrollment);
+    void ShowCourse(Course course);
 }
-<span class="kw">public interface</span> <span class="ty">IPaymentDisplay</span>
+public interface ILessonManagement
 {
-    <span class="kw">void</span> <span class="fn">ShowPayment</span>(<span class="ty">Payment</span> payment);
+    void AddLesson(Lesson lesson);
 }
-<span class="kw">public interface</span> <span class="ty">IReviewDisplay</span>
+public interface IEnrollmentDisplay
 {
-    <span class="kw">void</span> <span class="fn">ShowReview</span>(<span class="ty">Review</span> review);
-}</code></pre>
-    <p>For example:</p>
-<pre><code><span class="kw">public class</span> <span class="ty">Course</span> : <span class="ty">ILessonManagement</span>
+    void ShowEnrollment(Enrollment enrollment);
+}
+public interface IPaymentDisplay
 {
-    <span class="kw">public void</span> <span class="fn">AddLesson</span>(<span class="ty">Lesson</span> lesson)
+    void ShowPayment(Payment payment);
+}
+public interface IReviewDisplay
+{
+    void ShowReview(Review review);
+}
+For example:
+
+csharp
+public class Course : ILessonManagement
+{
+    public void AddLesson(Lesson lesson)
     {
-        Lessons.<span class="fn">Add</span>(lesson);
+        Lessons.Add(lesson);
     }
-}</code></pre>
-    <p><code>Course</code> implements only the interface it actually needs.</p>
-    <div class="success">
-      <strong>Benefit:</strong> Small interfaces make the system easier to understand, maintain, extend, and test.
-    </div>
+}
+Course implements only the interface it actually needs.
 
-    <!-- DIP -->
-    <h3>🔴 5. DIP — Dependency Inversion Principle</h3>
-    <p><strong>Responsible:</strong> Youssef Hegazy</p>
-    <p><strong>Definition:</strong> High-level modules should not depend directly on low-level concrete implementations. Both should depend on abstractions.</p>
-    <p>The project defines:</p>
-<pre><code><span class="kw">public interface</span> <span class="ty">IEnrollment</span>
+Benefit: Small interfaces make the system easier to understand, maintain, extend, and test.
+
+🔴 5. DIP — Dependency Inversion Principle
+Responsible: Youssef Hegazy
+
+Definition: High-level modules should not depend directly on low-level concrete implementations. Both should depend on abstractions.
+
+The project defines:
+
+csharp
+public interface IEnrollment
 {
-    <span class="kw">string</span> StudentName { <span class="kw">get</span>; }
-    <span class="kw">string</span> CourseTitle { <span class="kw">get</span>; }
-}</code></pre>
-    <p><code>Enrollment</code> implements this abstraction:</p>
-<pre><code><span class="kw">public class</span> <span class="ty">Enrollment</span> : <span class="ty">IEnrollment</span>
+    string StudentName { get; }
+    string CourseTitle { get; }
+}
+Enrollment implements this abstraction:
+
+csharp
+public class Enrollment : IEnrollment
 {
-    <span class="kw">public string</span> StudentName
+    public string StudentName
     {
-        <span class="kw">get</span> { <span class="kw">return</span> Student.Name; }
+        get { return Student.Name; }
     }
 
-    <span class="kw">public string</span> CourseTitle
+    public string CourseTitle
     {
-        <span class="kw">get</span> { <span class="kw">return</span> Course.Title; }
+        get { return Course.Title; }
     }
-}</code></pre>
-    <p>The <code>Payment</code> class depends on the abstraction:</p>
-<pre><code><span class="kw">public class</span> <span class="ty">Payment</span>
-{
-    <span class="kw">public</span> <span class="ty">IEnrollment</span> Enrollment;
+}
+The Payment class depends on the abstraction:
 
-    <span class="kw">public</span> <span class="fn">Payment</span>(
-        <span class="kw">int</span> paymentID,
-        <span class="ty">IEnrollment</span> enrollment,
-        <span class="kw">double</span> amount,
-        <span class="kw">string</span> paymentMethod,
-        <span class="ty">DateTime</span> paymentDate,
-        <span class="kw">string</span> status)
+csharp
+public class Payment
+{
+    public IEnrollment Enrollment;
+
+    public Payment(
+        int paymentID,
+        IEnrollment enrollment,
+        double amount,
+        string paymentMethod,
+        DateTime paymentDate,
+        string status)
     {
         PaymentID = paymentID;
         Enrollment = enrollment;
@@ -687,34 +438,21 @@
         PaymentDate = paymentDate;
         Status = status;
     }
-}</code></pre>
-    <p>Instead of <code>public Enrollment Enrollment;</code>, the project uses <code>public IEnrollment Enrollment;</code>.</p>
-    <div class="note">
-      <strong>Important Note:</strong> The current project demonstrates Dependency Inversion, but it does not yet implement a full Dependency Injection container. A future ASP.NET Core version can introduce Constructor Injection, .NET DI Container, and Service Registration.
-    </div>
-  </section>
+}
+Instead of public Enrollment Enrollment;, the project uses public IEnrollment Enrollment;.
 
-  <!-- SUMMARY -->
-  <section id="summary">
-    <h2>📊 SOLID Summary</h2>
-    <table>
-      <thead>
-        <tr><th>Principle</th><th>Meaning</th><th>Application</th><th>Responsible</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>SRP</td><td>Single Responsibility</td><td>ConsolePrinter handles presentation</td><td>Mohamed Saeed</td></tr>
-        <tr><td>OCP</td><td>Open/Closed</td><td>New course types extend Course</td><td>Ziad Elfeky</td></tr>
-        <tr><td>LSP</td><td>Liskov Substitution</td><td>Derived courses work as Course</td><td>Ahmed Khalifa</td></tr>
-        <tr><td>ISP</td><td>Interface Segregation</td><td>Small specialized interfaces</td><td>Team</td></tr>
-        <tr><td>DIP</td><td>Dependency Inversion</td><td>Payment depends on IEnrollment</td><td>Youssef Hegazy</td></tr>
-      </tbody>
-    </table>
-  </section>
+Important Note: The current project demonstrates Dependency Inversion, but it does not yet implement a full Dependency Injection container. A future ASP.NET Core version can introduce Constructor Injection, .NET DI Container, and Service Registration.
 
-  <!-- RELATIONSHIPS -->
-  <section id="relationships">
-    <h2>🔗 Entity Relationships</h2>
-    <div class="diagram">Instructor (1) ────────► (N) Course
+📊 SOLID Summary
+Principle	Meaning	Application	Responsible
+SRP	Single Responsibility	ConsolePrinter handles presentation	Mohamed Saeed
+OCP	Open/Closed	New course types extend Course	Ziad Elfeky
+LSP	Liskov Substitution	Derived courses work as Course	Ahmed Khalifa
+ISP	Interface Segregation	Small specialized interfaces	Team
+DIP	Dependency Inversion	Payment depends on IEnrollment	Youssef Hegazy
+🔗 Entity Relationships
+text
+Instructor (1) ────────► (N) Course
 
 Category   (1) ────────► (N) Course
 
@@ -727,257 +465,233 @@ Enrollment (1) ────────► (1) Payment
 Student    (1) ────────► (N) Review ◄────────── (N) Course
 
 Student    (N) ◄──────────────────────────────► (N) Course
-                     through Enrollment</div>
+                     through Enrollment
+Relationship Details
+Relationship	Type	Description
+Instructor → Course	1 : N	One instructor can have multiple courses
+Category → Course	1 : N	One category can contain multiple courses
+Course → Lesson	1 : N	One course can contain multiple lessons
+Student → Enrollment	1 : N	One student can have multiple enrollments
+Course → Enrollment	1 : N	One course can have multiple enrollments
+Enrollment → Payment	1 : 1*	Business assumption that an enrollment has one payment
+Student → Review	1 : N	One student can write multiple reviews
+Course → Review	1 : N	One course can have multiple reviews
+Note: The Enrollment → Payment 1:1 relationship is a business assumption. The current object model does not enforce the relationship from both sides.
 
-    <h3>Relationship Details</h3>
-    <table>
-      <thead>
-        <tr><th>Relationship</th><th>Type</th><th>Description</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Instructor → Course</td><td>1 : N</td><td>One instructor can have multiple courses</td></tr>
-        <tr><td>Category → Course</td><td>1 : N</td><td>One category can contain multiple courses</td></tr>
-        <tr><td>Course → Lesson</td><td>1 : N</td><td>One course can contain multiple lessons</td></tr>
-        <tr><td>Student → Enrollment</td><td>1 : N</td><td>One student can have multiple enrollments</td></tr>
-        <tr><td>Course → Enrollment</td><td>1 : N</td><td>One course can have multiple enrollments</td></tr>
-        <tr><td>Enrollment → Payment</td><td>1 : 1*</td><td>Business assumption that an enrollment has one payment</td></tr>
-        <tr><td>Student → Review</td><td>1 : N</td><td>One student can write multiple reviews</td></tr>
-        <tr><td>Course → Review</td><td>1 : N</td><td>One course can have multiple reviews</td></tr>
-      </tbody>
-    </table>
-    <div class="note">
-      <strong>Note:</strong> The <code>Enrollment → Payment 1:1</code> relationship is a business assumption. The current object model does not enforce the relationship from both sides.
-    </div>
-  </section>
-
-  <!-- ENTITIES -->
-  <section id="entities">
-    <h2>🧩 Main Entities</h2>
-
-    <h3>👨‍🎓 Student</h3>
-<pre><code><span class="ty">Student</span> student1 =
-    <span class="kw">new</span> <span class="ty">Student</span>(
-        <span class="nm">1</span>,
-        <span class="st">"Ibrahim Elghazaly"</span>,
-        <span class="st">"ibrahim@gmail.com"</span>
-    );</code></pre>
-
-    <h3>👨‍🏫 Instructor</h3>
-<pre><code><span class="ty">Instructor</span> instructor1 =
-    <span class="kw">new</span> <span class="ty">Instructor</span>(
-        <span class="nm">1</span>,
-        <span class="st">"Ahmed Mohamed"</span>,
-        <span class="st">"ahmed@gmail.com"</span>,
-        <span class="st">"C# and .NET"</span>,
-        <span class="st">"C# and .NET Instructor"</span>
-    );</code></pre>
-
-    <h3>🗂️ Category</h3>
-<pre><code><span class="ty">Category</span> category1 =
-    <span class="kw">new</span> <span class="ty">Category</span>(
-        <span class="nm">1</span>,
-        <span class="st">"Programming"</span>
-    );</code></pre>
-
-    <h3>📚 Course</h3>
-<pre><code><span class="ty">Course</span> course1 =
-    <span class="kw">new</span> <span class="ty">Course</span>(
-        <span class="nm">1</span>,
-        <span class="st">"C# Programming"</span>,
-        <span class="st">"Learn C# Programming"</span>,
-        <span class="nm">150</span>,
-        <span class="st">"40 Hours"</span>,
-        <span class="st">"Beginner"</span>,
-        <span class="st">"English"</span>,
+🧩 Main Entities
+👨‍🎓 Student
+csharp
+Student student1 =
+    new Student(
+        1,
+        "Ibrahim Elghazaly",
+        "ibrahim@gmail.com"
+    );
+👨‍🏫 Instructor
+csharp
+Instructor instructor1 =
+    new Instructor(
+        1,
+        "Ahmed Mohamed",
+        "ahmed@gmail.com",
+        "C# and .NET",
+        "C# and .NET Instructor"
+    );
+🗂️ Category
+csharp
+Category category1 =
+    new Category(
+        1,
+        "Programming"
+    );
+📚 Course
+csharp
+Course course1 =
+    new Course(
+        1,
+        "C# Programming",
+        "Learn C# Programming",
+        150,
+        "40 Hours",
+        "Beginner",
+        "English",
         instructor1,
         category1
-    );</code></pre>
-
-    <h3>🆓 FreeCourse</h3>
-<pre><code><span class="ty">FreeCourse</span> freeCourse =
-    <span class="kw">new</span> <span class="ty">FreeCourse</span>(
-        <span class="nm">4</span>,
-        <span class="st">"Intro to Git &amp; GitHub"</span>,
-        <span class="st">"A free introductory course"</span>,
-        <span class="st">"5 Hours"</span>,
-        <span class="st">"Beginner"</span>,
-        <span class="st">"English"</span>,
+    );
+🆓 FreeCourse
+csharp
+FreeCourse freeCourse =
+    new FreeCourse(
+        4,
+        "Intro to Git & GitHub",
+        "A free introductory course",
+        "5 Hours",
+        "Beginner",
+        "English",
         instructor1,
         category1
-    );</code></pre>
-
-    <h3>🎓 CertificateCourse</h3>
-<pre><code><span class="ty">CertificateCourse</span> certificateCourse =
-    <span class="kw">new</span> <span class="ty">CertificateCourse</span>(
-        <span class="nm">5</span>,
-        <span class="st">"Advanced ASP.NET Core"</span>,
-        <span class="st">"Deep dive with a certificate"</span>,
-        <span class="nm">300</span>,
-        <span class="st">"60 Hours"</span>,
-        <span class="st">"Advanced"</span>,
-        <span class="st">"English"</span>,
+    );
+🎓 CertificateCourse
+csharp
+CertificateCourse certificateCourse =
+    new CertificateCourse(
+        5,
+        "Advanced ASP.NET Core",
+        "Deep dive with a certificate",
+        300,
+        "60 Hours",
+        "Advanced",
+        "English",
         instructor2,
         category2
-    );</code></pre>
-
-    <h3>🏷️ DiscountCourse</h3>
-<pre><code><span class="ty">DiscountCourse</span> discountCourse =
-    <span class="kw">new</span> <span class="ty">DiscountCourse</span>(
-        <span class="nm">6</span>,
-        <span class="st">"ASP.NET Core"</span>,
-        <span class="st">"Learn ASP.NET Core with discount"</span>,
-        <span class="nm">200</span>,
-        <span class="nm">20</span>,
-        <span class="st">"40 Hours"</span>,
-        <span class="st">"Intermediate"</span>,
-        <span class="st">"English"</span>,
+    );
+🏷️ DiscountCourse
+csharp
+DiscountCourse discountCourse =
+    new DiscountCourse(
+        6,
+        "ASP.NET Core",
+        "Learn ASP.NET Core with discount",
+        200,
+        20,
+        "40 Hours",
+        "Intermediate",
+        "English",
         instructor1,
         category1
-    );</code></pre>
-
-    <h3>📖 Lesson</h3>
-<pre><code><span class="ty">Lesson</span> lesson1 =
-    <span class="kw">new</span> <span class="ty">Lesson</span>(
-        <span class="nm">1</span>,
-        <span class="st">"Introduction to C#"</span>,
-        <span class="st">"20 Minutes"</span>,
-        <span class="nm">1</span>
+    );
+📖 Lesson
+csharp
+Lesson lesson1 =
+    new Lesson(
+        1,
+        "Introduction to C#",
+        "20 Minutes",
+        1
     );
 
-course1.<span class="fn">AddLesson</span>(lesson1);</code></pre>
-    <p>The <code>AddLesson()</code> operation is provided through <code>ILessonManagement</code>.</p>
+course1.AddLesson(lesson1);
+The AddLesson() operation is provided through ILessonManagement.
 
-    <h3>📝 Enrollment</h3>
-<pre><code><span class="ty">Enrollment</span> enrollment1 =
-    <span class="kw">new</span> <span class="ty">Enrollment</span>(
-        <span class="nm">1</span>,
+📝 Enrollment
+csharp
+Enrollment enrollment1 =
+    new Enrollment(
+        1,
         student1,
         course1,
-        <span class="ty">DateTime</span>.Now,
-        <span class="st">"Active"</span>,
-        <span class="nm">150</span>,
-        <span class="st">"Credit Card"</span>
-    );</code></pre>
-    <p><code>Enrollment</code> implements <code>IEnrollment</code>.</p>
+        DateTime.Now,
+        "Active",
+        150,
+        "Credit Card"
+    );
+Enrollment implements IEnrollment.
 
-    <h3>💳 Payment</h3>
-<pre><code><span class="ty">Payment</span> payment1 =
-    <span class="kw">new</span> <span class="ty">Payment</span>(
-        <span class="nm">1</span>,
+💳 Payment
+csharp
+Payment payment1 =
+    new Payment(
+        1,
         enrollment1,
-        <span class="nm">150</span>,
-        <span class="st">"Credit Card"</span>,
-        <span class="ty">DateTime</span>.Now,
-        <span class="st">"Completed"</span>
-    );</code></pre>
-    <p><code>Payment</code> depends on <code>IEnrollment</code> rather than directly depending on the concrete <code>Enrollment</code> type.</p>
+        150,
+        "Credit Card",
+        DateTime.Now,
+        "Completed"
+    );
+Payment depends on IEnrollment rather than directly depending on the concrete Enrollment type.
 
-    <h3>⭐ Review</h3>
-<pre><code><span class="ty">Review</span> review1 =
-    <span class="kw">new</span> <span class="ty">Review</span>(
-        <span class="nm">1</span>,
+⭐ Review
+csharp
+Review review1 =
+    new Review(
+        1,
         student1,
         course1,
-        <span class="nm">5</span>,
-        <span class="st">"Very good course"</span>,
-        <span class="ty">DateTime</span>.Now
-    );</code></pre>
-  </section>
+        5,
+        "Very good course",
+        DateTime.Now
+    );
+🖨️ ConsolePrinter
+ConsolePrinter is the main presentation component in the Console Application. It implements several small display interfaces:
 
-  <!-- PRINTER -->
-  <section id="printer">
-    <h2>🖨️ ConsolePrinter</h2>
-    <p><code>ConsolePrinter</code> is the main presentation component in the Console Application. It implements several small display interfaces:</p>
-<pre><code><span class="kw">public class</span> <span class="ty">ConsolePrinter</span> :
-    <span class="ty">ICourseDisplay</span>,
-    <span class="ty">IEnrollmentDisplay</span>,
-    <span class="ty">IPaymentDisplay</span>,
-    <span class="ty">IReviewDisplay</span>
+csharp
+public class ConsolePrinter :
+    ICourseDisplay,
+    IEnrollmentDisplay,
+    IPaymentDisplay,
+    IReviewDisplay
 {
-    <span class="kw">public void</span> <span class="fn">ShowStudent</span>(<span class="ty">Student</span> student)
+    public void ShowStudent(Student student)
     {
-        <span class="cm">// Display student information</span>
+        // Display student information
     }
 
-    <span class="kw">public void</span> <span class="fn">ShowInstructor</span>(<span class="ty">Instructor</span> instructor)
+    public void ShowInstructor(Instructor instructor)
     {
-        <span class="cm">// Display instructor information</span>
+        // Display instructor information
     }
 
-    <span class="kw">public void</span> <span class="fn">ShowCourse</span>(<span class="ty">Course</span> course)
+    public void ShowCourse(Course course)
     {
-        <span class="cm">// Display course information</span>
+        // Display course information
     }
 
-    <span class="kw">public void</span> <span class="fn">ShowEnrollment</span>(<span class="ty">Enrollment</span> enrollment)
+    public void ShowEnrollment(Enrollment enrollment)
     {
-        <span class="cm">// Display enrollment information</span>
+        // Display enrollment information
     }
 
-    <span class="kw">public void</span> <span class="fn">ShowPayment</span>(<span class="ty">Payment</span> payment)
+    public void ShowPayment(Payment payment)
     {
-        <span class="cm">// Display payment information</span>
+        // Display payment information
     }
 
-    <span class="kw">public void</span> <span class="fn">ShowReview</span>(<span class="ty">Review</span> review)
+    public void ShowReview(Review review)
     {
-        <span class="cm">// Display review information</span>
+        // Display review information
     }
-}</code></pre>
-    <h4>Design Principles Demonstrated</h4>
-    <ul>
-      <li><strong>SRP:</strong> Presentation is separated from model classes.</li>
-      <li><strong>ISP:</strong> Display responsibilities are separated into focused interfaces.</li>
-    </ul>
-  </section>
+}
+Design Principles Demonstrated:
 
-  <!-- PRICING -->
-  <section id="pricing">
-    <h2>💰 Course Pricing Demonstration</h2>
-    <p>The project contains several pricing behaviors:</p>
-    <table>
-      <thead>
-        <tr><th>Course Type</th><th>Base Price</th><th>Rule</th><th>Final Price</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Course</td><td>150</td><td>No change</td><td>150</td></tr>
-        <tr><td>Course</td><td>120</td><td>No change</td><td>120</td></tr>
-        <tr><td>Course</td><td>180</td><td>No change</td><td>180</td></tr>
-        <tr><td>FreeCourse</td><td>0</td><td>Free</td><td>0</td></tr>
-        <tr><td>CertificateCourse</td><td>300</td><td>+100 certificate fee</td><td>400</td></tr>
-        <tr><td>DiscountCourse</td><td>200</td><td>20% discount</td><td>160</td></tr>
-      </tbody>
-    </table>
-    <h4>Calculation</h4>
-<pre><code><span class="nm">150</span> + <span class="nm">120</span> + <span class="nm">180</span> + <span class="nm">0</span> + <span class="nm">400</span> + <span class="nm">160</span> = <span class="nm">1010</span></code></pre>
-    <p>Therefore:</p>
-<pre><code>Total Final Price of Courses: <span class="nm">1010</span></code></pre>
-    <div class="note">
-      This value represents the sum of the final prices of the course objects. It should not be interpreted as actual business revenue from enrollments.
-    </div>
-  </section>
+SRP: Presentation is separated from model classes.
 
-  <!-- RUN -->
-  <section id="run">
-    <h2>▶️ How to Run the Project</h2>
+ISP: Display responsibilities are separated into focused interfaces.
 
-    <h4>1. Clone the Repository</h4>
-<pre><code>git clone https://github.com/EbrahimElghazaly/E_Learning_Platform.git</code></pre>
+💰 Course Pricing Demonstration
+The project contains several pricing behaviors:
 
-    <h4>2. Open the Project</h4>
-<pre><code>cd E_Learning_Platform</code></pre>
+Course Type	Base Price	Rule	Final Price
+Course	150	No change	150
+Course	120	No change	120
+Course	180	No change	180
+FreeCourse	0	Free	0
+CertificateCourse	300	+100 certificate fee	400
+DiscountCourse	200	20% discount	160
+Calculation
+text
+150 + 120 + 180 + 0 + 400 + 160 = 1010
+Therefore:
 
-    <h4>3. Build the Project</h4>
-<pre><code>dotnet build</code></pre>
+text
+Total Final Price of Courses: 1010
+This value represents the sum of the final prices of the course objects. It should not be interpreted as actual business revenue from enrollments.
 
-    <h4>4. Run the Application</h4>
-<pre><code>dotnet run</code></pre>
-  </section>
-
-  <!-- OUTPUT -->
-  <section id="output">
-    <h2>📤 Expected Output</h2>
-<pre><code>========== STUDENTS ==========
+▶️ How to Run the Project
+1. Clone the Repository
+bash
+git clone https://github.com/EbrahimElghazaly/E_Learning_Platform.git
+2. Open the Project
+bash
+cd E_Learning_Platform
+3. Build the Project
+bash
+dotnet build
+4. Run the Application
+bash
+dotnet run
+📤 Expected Output
+text
+========== STUDENTS ==========
 
 Student ID: 1
 Name: Ibrahim Elghazaly
@@ -1016,121 +730,138 @@ Total Final Price of Courses: 1010
 
 ========== PAYMENTS ==========
 
-========== REVIEWS ==========</code></pre>
-  </section>
+========== REVIEWS ==========
+🔄 Project Versions
+Version 1 — Basic Implementation
+The first version focuses on:
 
-  <!-- VERSIONS -->
-  <section id="versions">
-    <h2>🔄 Project Versions</h2>
+C# fundamentals
 
-    <h3>Version 1 — Basic Implementation</h3>
-    <p>The first version focuses on:</p>
-    <ul>
-      <li>C# fundamentals</li>
-      <li>Classes and Objects</li>
-      <li>Constructors</li>
-      <li>Collections</li>
-      <li>Basic relationships</li>
-      <li>Basic OOP</li>
-    </ul>
-    <p>It intentionally does not focus on SOLID.</p>
+Classes and Objects
 
-    <h3>Version 2 — Refactoring &amp; SOLID</h3>
-    <p>The second version refactors the project and introduces:</p>
-    <ul>
-      <li>SRP</li>
-      <li>OCP</li>
-      <li>LSP</li>
-      <li>ISP</li>
-      <li>DIP</li>
-      <li>Interfaces</li>
-      <li>Polymorphism</li>
-      <li>Better separation of responsibilities</li>
-      <li>More extensible course pricing</li>
-    </ul>
-    <p>This is the current SOLID-focused implementation.</p>
-  </section>
+Constructors
 
-  <!-- FUTURE -->
-  <section id="future">
-    <h2>🌱 Future Improvements</h2>
+Collections
 
-    <h3>🔐 Authentication</h3>
-    <ul>
-      <li>Student registration</li>
-      <li>Instructor registration</li>
-      <li>Admin authentication</li>
-      <li>JWT Authentication</li>
-      <li>Role-based authorization</li>
-    </ul>
+Basic relationships
 
-    <h3>🔍 Search &amp; Filtering</h3>
-    <ul>
-      <li>Search courses</li>
-      <li>Filter by category</li>
-      <li>Filter by level</li>
-      <li>Filter by price</li>
-      <li>Filter by instructor</li>
-    </ul>
+Basic OOP
 
-    <h3>📊 Dashboards</h3>
-    <ul>
-      <li>Student Dashboard</li>
-      <li>Instructor Dashboard</li>
-      <li>Admin Dashboard</li>
-    </ul>
+It intentionally does not focus on SOLID.
 
-    <h3>💳 Payments</h3>
-    <p>A future version can introduce <code>IPaymentMethod</code> with implementations such as:</p>
-    <ul>
-      <li><code>CreditCardPayment</code></li>
-      <li><code>CashPayment</code></li>
-      <li><code>PayPalPayment</code></li>
-      <li><code>WalletPayment</code></li>
-    </ul>
-    <p>This would provide another practical example of Abstraction, OCP, DIP, and Polymorphism.</p>
+Version 2 — Refactoring & SOLID
+The second version refactors the project and introduces:
 
-    <h3>🗄️ Database</h3>
-    <ul>
-      <li>SQL Server</li>
-      <li>Entity Framework Core</li>
-      <li>Database Migrations</li>
-      <li>Relationships</li>
-      <li>CRUD Operations</li>
-    </ul>
+SRP
 
-    <h3>🌐 Backend</h3>
-    <ul>
-      <li>ASP.NET Core Web API</li>
-      <li>RESTful APIs</li>
-      <li>JWT Authentication</li>
-      <li>Dependency Injection</li>
-      <li>Repository Pattern</li>
-      <li>Service Layer</li>
-    </ul>
+OCP
 
-    <h3>🧪 Testing</h3>
-    <ul>
-      <li>Unit Testing</li>
-      <li>xUnit</li>
-      <li>Mocking</li>
-      <li>Integration Testing</li>
-    </ul>
+LSP
 
-    <h3>🏛️ Architecture</h3>
-    <ul>
-      <li>Clean Architecture</li>
-      <li>Separation of Concerns</li>
-      <li>Service Layer</li>
-      <li>Repository Layer</li>
-    </ul>
-  </section>
+ISP
 
-  <!-- API -->
-  <section id="api">
-    <h2>🔌 Future API Endpoints</h2>
-    <p>A future ASP.NET Core Web API version could expose:</p>
-<pre><code>GET     /api/students
+DIP
+
+Interfaces
+
+Polymorphism
+
+Better separation of responsibilities
+
+More extensible course pricing
+
+This is the current SOLID-focused implementation.
+
+🌱 Future Improvements
+🔐 Authentication
+Student registration
+
+Instructor registration
+
+Admin authentication
+
+JWT Authentication
+
+Role-based authorization
+
+🔍 Search & Filtering
+Search courses
+
+Filter by category
+
+Filter by level
+
+Filter by price
+
+Filter by instructor
+
+📊 Dashboards
+Student Dashboard
+
+Instructor Dashboard
+
+Admin Dashboard
+
+💳 Payments
+A future version can introduce IPaymentMethod with implementations such as:
+
+CreditCardPayment
+
+CashPayment
+
+PayPalPayment
+
+WalletPayment
+
+This would provide another practical example of Abstraction, OCP, DIP, and Polymorphism.
+
+🗄️ Database
+SQL Server
+
+Entity Framework Core
+
+Database Migrations
+
+Relationships
+
+CRUD Operations
+
+🌐 Backend
+ASP.NET Core Web API
+
+RESTful APIs
+
+JWT Authentication
+
+Dependency Injection
+
+Repository Pattern
+
+Service Layer
+
+🧪 Testing
+Unit Testing
+
+xUnit
+
+Mocking
+
+Integration Testing
+
+🏛️ Architecture
+Clean Architecture
+
+Separation of Concerns
+
+Service Layer
+
+Repository Layer
+
+🔌 Future API Endpoints
+A future ASP.NET Core Web API version could expose:
+
+text
+GET     /api/students
 POST    /api/students
 
 GET     /api/courses
@@ -1142,38 +873,43 @@ POST    /api/enrollments
 POST    /api/payments
 
 POST    /api/reviews
-GET     /api/courses/{id}/reviews</code></pre>
-    <div class="note">
-      These endpoints are planned for a future ASP.NET Core Web API version and are not part of the current Console Application.
-    </div>
-  </section>
+GET     /api/courses/{id}/reviews
+These endpoints are planned for a future ASP.NET Core Web API version and are not part of the current Console Application.
 
-  <!-- OUTCOMES -->
-  <section id="outcomes">
-    <h2>🎓 Learning Outcomes</h2>
-    <p>After completing this project, the team practiced:</p>
-    <ul>
-      <li>✅ Building a C# application from scratch</li>
-      <li>✅ Creating classes and objects</li>
-      <li>✅ Using constructors</li>
-      <li>✅ Working with collections</li>
-      <li>✅ Modeling real-world entities</li>
-      <li>✅ Creating object relationships</li>
-      <li>✅ Understanding inheritance</li>
-      <li>✅ Understanding polymorphism</li>
-      <li>✅ Using abstraction and interfaces</li>
-      <li>✅ Applying SOLID principles</li>
-      <li>✅ Refactoring existing code</li>
-      <li>✅ Separating responsibilities</li>
-      <li>✅ Designing extensible code</li>
-      <li>✅ Preparing a project for future API and database integration</li>
-    </ul>
-  </section>
+🎓 Learning Outcomes
+After completing this project, the team practiced:
 
-  <!-- ROADMAP -->
-  <section id="roadmap">
-    <h2>🏛️ Architecture Roadmap</h2>
-    <div class="diagram">C# Console Application
+✅ Building a C# application from scratch
+
+✅ Creating classes and objects
+
+✅ Using constructors
+
+✅ Working with collections
+
+✅ Modeling real-world entities
+
+✅ Creating object relationships
+
+✅ Understanding inheritance
+
+✅ Understanding polymorphism
+
+✅ Using abstraction and interfaces
+
+✅ Applying SOLID principles
+
+✅ Refactoring existing code
+
+✅ Separating responsibilities
+
+✅ Designing extensible code
+
+✅ Preparing a project for future API and database integration
+
+🏛️ Architecture Roadmap
+text
+C# Console Application
         ↓
        OOP
         ↓
@@ -1189,61 +925,53 @@ ASP.NET Core Web API
         ↓
 Dependency Injection
         ↓
-Authentication &amp; Authorization
+Authentication & Authorization
         ↓
      Frontend
         ↓
-Complete E-Learning Platform</div>
-  </section>
+Complete E-Learning Platform
+📌 Important Design Notes
+SOLID
+The project demonstrates the five official SOLID principles:
 
-  <!-- NOTES -->
-  <section id="notes">
-    <h2>📌 Important Design Notes</h2>
+S → Single Responsibility Principle
 
-    <h3>SOLID</h3>
-    <p>The project demonstrates the five official SOLID principles:</p>
-    <ul>
-      <li><strong>S</strong> → Single Responsibility Principle</li>
-      <li><strong>O</strong> → Open/Closed Principle</li>
-      <li><strong>L</strong> → Liskov Substitution Principle</li>
-      <li><strong>I</strong> → Interface Segregation Principle</li>
-      <li><strong>D</strong> → Dependency Inversion Principle</li>
-    </ul>
+O → Open/Closed Principle
 
-    <h3>Inheritance</h3>
-    <div class="warn">
-      Inheritance is <strong>not a sixth SOLID principle</strong>. It is an Object-Oriented Programming concept used in this project to support code reuse, polymorphism, and specialized course types.
-    </div>
+L → Liskov Substitution Principle
 
-    <h3>Dependency Inversion vs Dependency Injection</h3>
-    <p>The current project demonstrates <strong>Dependency Inversion</strong> by making <code>Payment</code> depend on <code>IEnrollment</code> instead of <code>Enrollment</code>.</p>
-    <p>A future version can implement full <strong>Dependency Injection</strong> using:</p>
-    <ul>
-      <li>Constructor Injection</li>
-      <li>.NET DI Container</li>
-      <li>Service Registration</li>
-    </ul>
-  </section>
+I → Interface Segregation Principle
 
-  <!-- TEAM CARDS -->
-  <section>
-    <h2>👨‍💻 Team</h2>
-    <div class="team-grid">
-      <div class="team-card"><div class="role">🏗️ Project Owner</div><div class="name">Ibrahim Mohamed Elghazaly</div></div>
-      <div class="team-card"><div class="role">🔵 SRP</div><div class="name">Mohamed Saeed</div></div>
-      <div class="team-card"><div class="role">🟢 OCP</div><div class="name">Ziad Elfeky</div></div>
-      <div class="team-card"><div class="role">🟡 LSP</div><div class="name">Ahmed Khalifa</div></div>
-      <div class="team-card"><div class="role">🟠 OOP / Inheritance</div><div class="name">Ghofran Mohamed</div></div>
-      <div class="team-card"><div class="role">🔴 DIP</div><div class="name">Youssef Hegazy</div></div>
-      <div class="team-card"><div class="role">🟣 ISP</div><div class="name">Team</div></div>
-    </div>
-  </section>
+D → Dependency Inversion Principle
 
-  <!-- VISION -->
-  <section>
-    <h2>⭐ Project Vision</h2>
-    <p>The goal is to transform the current educational Console Application into a complete and scalable E-Learning Platform.</p>
-    <div class="diagram">Console App
+Inheritance
+Inheritance is not a sixth SOLID principle. It is an Object-Oriented Programming concept used in this project to support code reuse, polymorphism, and specialized course types.
+
+Dependency Inversion vs Dependency Injection
+The current project demonstrates Dependency Inversion by making Payment depend on IEnrollment instead of Enrollment.
+
+A future version can implement full Dependency Injection using:
+
+Constructor Injection
+
+.NET DI Container
+
+Service Registration
+
+👨‍💻 Team
+Name	Contribution
+Ibrahim Mohamed Elghazaly	Project idea, base implementation, integration
+Mohamed Saeed	SRP
+Ziad Elfeky	OCP
+Ahmed Khalifa	LSP
+Ghofran Mohamed	OOP / Inheritance
+Youssef Hegazy	DIP
+Team	ISP and final integration
+⭐ Project Vision
+The goal is to transform the current educational Console Application into a complete and scalable E-Learning Platform.
+
+text
+Console App
      ↓
 OOP
      ↓
@@ -1259,26 +987,15 @@ Authentication
      ↓
 Frontend
      ↓
-Complete E-Learning Platform</div>
-  </section>
+Complete E-Learning Platform
+❤️ Final Message
+This project represents a practical learning journey from basic C# programming and OOP to SOLID principles, refactoring, abstraction, polymorphism, and clean code.
 
-  <!-- FINAL -->
-  <section>
-    <h2>❤️ Final Message</h2>
-    <p>This project represents a practical learning journey from basic C# programming and OOP to SOLID principles, refactoring, abstraction, polymorphism, and clean code.</p>
-    <p>It provides a foundation that can later evolve into a complete ASP.NET Core + SQL Server E-Learning Platform.</p>
-    <div class="success" style="text-align:center;">
-      <strong>Made with ❤️ by Ibrahim Mohamed Elghazaly &amp; Team</strong>
-    </div>
-  </section>
+It provides a foundation that can later evolve into a complete ASP.NET Core + SQL Server E-Learning Platform.
 
-  <footer>
-    <p>🎓 E-Learning Platform — C# / .NET Console Application</p>
-    <p style="margin-top:6px;">Made with <span class="heart">❤️</span> by Ibrahim Mohamed Elghazaly &amp; Team</p>
-  </footer>
+<div align="center">
+Made with ❤️ by Ibrahim Mohamed Elghazaly & Team
 
-</div>
+⭐ Don't forget to star the repository if you found it useful! ⭐
 
-<a href="#" class="top" title="Back to top">↑</a>
-</body>
-</html>
+</div> ```
